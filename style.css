@@ -45,10 +45,12 @@ body{
 }
 
 form .user-details .input-box{
-width: calc(100% / 2 - 20px);
+    margin: 20px 0 12 px 0;
+    width: calc(100% / 2 - 20px);
 }
 
 .user-details .input-box .details{
+    display: block;
     font-weight: 500;
     margin-bottom: 5px;
 }
