@@ -8,6 +8,9 @@
 </head>
 
 <style>
+    p {
+        color:black;
+    }
     h1{
         text-align: center;
         font-size: 10em;
