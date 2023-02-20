@@ -54,3 +54,12 @@ form .user-details .input-box{
     font-weight: 500;
     margin-bottom: 5px;
 }
+
+.user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+}
