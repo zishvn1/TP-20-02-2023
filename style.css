@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -20,6 +22,7 @@ body{
     background: #fff;
     padding: 25px 30px;
     border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
 
 .container .title{
@@ -29,12 +32,13 @@ body{
 }
 
 .container .title::before{
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
     height: 3px;
     width: 30px;
+    border-radius: 5px;
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
@@ -50,7 +54,7 @@ form .user-details .input-box{
     width: calc(100% / 2 - 20px);
 }
 
-.user-details .input-box .details{
+form .input-box span.details{
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
@@ -71,4 +75,9 @@ form .user-details .input-box{
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
     border-color: #9b59b6;
+}
+
+form .gender-details .gender-title{
+    font-size: 20px;
+    font-weight: 500;
 }
