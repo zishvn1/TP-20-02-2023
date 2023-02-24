@@ -49,7 +49,7 @@
 
     .brands img {
         width: 200px;
-        height: 100px;
+        height: 120px;
     }
 </style>
 
@@ -66,12 +66,12 @@
             <p>SHOP BY BRANDS</p>
             <button class="brands">
                 <a href="products.php">
-                    <img src="images/Logo_BWM.png">
+                    <img src="images/bmw-logo.png">
                 </a>
             </button>
             <button class="brands">
                 <a href="products.php">
-                    <img src="images/Logo_MB.png">
+                    <img src="images/mb.png">
                 </a>
             </button>
             <button class="brands">
@@ -81,12 +81,12 @@
             </button>
             <button class="brands">
                 <a href="products.php">
-                    <img src="images/Logo_WW.png">
+                    <img src="images/vw.svg">
                 </a>
             </button>
             <button class="brands">
                 <a href="products.php">
-                    <img src="images/Logo_AUDI.png">
+                    <img src="images/Logo_AUDI2.png">
                 </a>
             </button>
 
