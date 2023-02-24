@@ -81,7 +81,7 @@
             </button>
             <button class="brands">
                 <a href="products.php">
-                    <img src="images/vw.svg">
+                    <img src="images/vw1.png">
                 </a>
             </button>
             <button class="brands">
