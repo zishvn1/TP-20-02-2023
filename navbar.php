@@ -60,9 +60,9 @@
         }
 
         .button2 {
-            background-color: #292525;
+            background-color: #36454F;
             border: none;
-            color: #bf1E2E;
+            color: red;
             border-radius: 10px;
             padding: 10px 20px;
             text-align: center;
@@ -81,7 +81,7 @@
         }
 
         .button2:hover {
-            background-color: #292525;
+            background-color: #36454F;
             color: white;
         }
     </style>
