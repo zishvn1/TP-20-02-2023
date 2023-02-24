@@ -43,13 +43,26 @@
         font-size: 30px;
     }
 
-    .highlight {
-        color: #bf1E2E;
+    .brands {
+        width: 200px;
+        height: 120px;
+        margin: 10px;
+        border: 1.7px solid black;
+        background-color: white;
+        box-sizing: border-box;
     }
 
     .brands img {
-        width: 200px;
-        height: 120px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .brands:hover {
+        border: 2px solid #bf1E2E;
+    }
+
+    .highlight {
+        color: #bf1E2E;
     }
 </style>
 
