@@ -8,6 +8,10 @@
 </head>
 
 <style>
+    body {
+        padding-top: 50px;
+    }
+    
     h1{
         text-align: center;
         font-size: 10em;

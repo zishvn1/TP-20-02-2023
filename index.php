@@ -63,7 +63,7 @@
             <p>at low cost.</p>
         </div>
         <div class="image-text-sec">
-            <p>SHOP BY BRANDS</p>
+            <p>SHOP BY BRANDS:</p>
             <button class="brands">
                 <a href="products.php">
                     <img src="images/bmw-logo.png">
