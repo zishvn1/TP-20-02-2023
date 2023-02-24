@@ -16,6 +16,7 @@
         justify-content: center;
         align-items: center;
         filter: blur(2px);
+        z-index: -1;
     }
 
     .image-container {
@@ -33,7 +34,7 @@
 
     .image-text-sec {
         position: absolute;
-        top: 60%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1;
@@ -44,12 +45,23 @@
     }
 
     .brands {
+        display: inline-block;
         width: 200px;
         height: 120px;
         margin: 10px;
         border: 1.7px solid black;
         background-color: white;
         box-sizing: border-box;
+    }
+
+    .brands-container {
+        position: absolute;
+        top: 60%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     .brands img {
@@ -77,6 +89,8 @@
         </div>
         <div class="image-text-sec">
             <p>SHOP BY BRANDS:</p>
+        </div>
+        <div class="brands-container">
             <button class="brands">
                 <a href="products.php">
                     <img src="images/bmw-logo.png">
@@ -102,12 +116,9 @@
                     <img src="images/Logo_AUDI2.png">
                 </a>
             </button>
-
         </div>
-    </div>
-    </div>
 
-    <?php include 'footer.php' ?>
+        <?php include 'footer.php' ?>
 
 </body>
 
