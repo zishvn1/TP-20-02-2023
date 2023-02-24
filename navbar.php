@@ -8,6 +8,7 @@
         * {
             padding: 0;
             margin: 0;
+            text-decoration: none;
         }
 
         #navbar {
@@ -28,11 +29,13 @@
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: 20px;
             color: grey !important;
+            margin-right: 10px;
         }
 
         a:visited {
             text-decoration: none;
             color: grey !important;
+            text-decoration: none;
         }
 
         .logo {

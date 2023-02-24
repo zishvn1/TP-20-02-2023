@@ -19,5 +19,7 @@
 
     <h1>Log in</h1>
 
+    <?php include 'footer.php' ?>
+
 </body>
 </html>

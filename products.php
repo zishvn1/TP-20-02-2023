@@ -19,5 +19,7 @@
 
     <h1>Products</h1>
 
+    <?php include 'footer.php' ?>
+
 </body>
 </html>

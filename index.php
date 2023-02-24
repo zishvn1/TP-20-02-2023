@@ -33,19 +33,24 @@
 
     .image-text-sec {
         position: absolute;
-        top: 50%;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1;
         color: white;
         text-align: center;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 30px;
     }
 
     .highlight {
         color: #bf1E2E;
     }
-    
+
+    .brands img {
+        width: 200px;
+        height: 100px;
+    }
 </style>
 
 <body>
@@ -59,9 +64,37 @@
         </div>
         <div class="image-text-sec">
             <p>SHOP BY BRANDS</p>
+            <button class="brands">
+                <a href="products.php">
+                    <img src="images/Logo_BWM.png">
+                </a>
+            </button>
+            <button class="brands">
+                <a href="products.php">
+                    <img src="images/Logo_MB.png">
+                </a>
+            </button>
+            <button class="brands">
+                <a href="products.php">
+                    <img src="images/Logo_Toyota.png">
+                </a>
+            </button>
+            <button class="brands">
+                <a href="products.php">
+                    <img src="images/Logo_WW.png">
+                </a>
+            </button>
+            <button class="brands">
+                <a href="products.php">
+                    <img src="images/Logo_AUDI.png">
+                </a>
+            </button>
+
         </div>
     </div>
     </div>
+
+    <?php include 'footer.php' ?>
 
 </body>
 

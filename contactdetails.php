@@ -19,5 +19,7 @@
 
     <h1>Contact Details</h1>
 
+    <?php include 'footer.php' ?>
+
 </body>
 </html>
