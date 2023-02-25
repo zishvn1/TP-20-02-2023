@@ -30,6 +30,13 @@
         color: black;
     }
 
+    .fa-facebook:hover {
+        color: #bf1E2E;
+    }
+
+    .fa-instagram:hover {
+        color: #bf1E2E;
+    }
 </style>
 
 <body>
