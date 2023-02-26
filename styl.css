@@ -1,0 +1,96 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+
+
+.header{
+    min-height:100vh;
+    max-width:110;
+    background-image: linear-gradient(to bottom right,#bf1e2e,#6d171e);
+}
+  
+
+.body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.ctitle{
+    width: 90%;
+    color: #fff;
+    position:absolute;
+    top: 20%;
+    left:51%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+.ctitle h1{
+    font-size: 62px;
+}
+
+.ContactInfo button{
+    background-color:#e7e7e7;color:black;
+    font-size: 24px;
+    padding:14px 40px;
+    border-radius: 12px;
+    border:2px solid #bf1e2e;
+    cursor: pointer;
+    position: absolute;
+    top:40%;
+    left: 21%;
+    width: 230px;
+}
+.ContactInfo button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.20), 0 17px 50px 0 rgba(0,0,0,0.30);
+  }
+
+.Enquires button{
+    background-color:#e7e7e7;color:black;
+    font-size: 24px;
+    padding:14px 40px;
+    border-radius: 12px;
+    border:2px solid #bf1e2e;
+    cursor: pointer;
+    position: absolute;
+    top:40%;
+    left: 45%;
+    width: 210px;
+}
+
+.Enquires button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.30) ;
+}
+
+.FAQS button{
+    background-color:#e7e7e7;color:black;
+    font-size: 24px;
+    padding:14px 40px;
+    border-radius: 12px;
+    border:2px solid #bf1e2e;
+    cursor: pointer;
+    position: absolute;
+    top:40%;
+    left: 68%;
+    width: 210px;
+}
+
+.FAQS button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.30) ;
+}
+
+.ToyotaL img {
+   border-radius:200px;
+   width:600px;
+   position: absolute;
+   top: 476px;
+   left: -38px;
+}
+
+.AudiR img{
+    border-radius:200px;
+    width:600px;
+    position: absolute;
+    top: 440px;
+    right: -10px;
+}

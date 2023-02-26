@@ -8,6 +8,10 @@
 </head>
 
 <style>
+    body {
+        padding-top: 50px;
+    }
+    
     h1{
         text-align: center;
         font-size: 10em;
@@ -18,6 +22,8 @@
     <?php include 'navbar.php'?>
 
     <h1>Products</h1>
+
+    <?php include 'footer.php' ?>
 
 </body>
 </html>
