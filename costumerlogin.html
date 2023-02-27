@@ -16,7 +16,7 @@
 
           <form action="#">
               <div class="input-field">
-                  <input type="text" placeholder="Enter your email" required>
+                  <input type="email" placeholder="Enter your email" required>
                   <i class="uil uil-envelope icon"></i>
               </div>
               <div class="input-field">
@@ -33,19 +33,22 @@
                   
                   <a href="#" class="text">Forgot password?</a>
               </div>
-
+              
+              <div class="input-field button">
+                <input type="button" value="Login">
+            </div>
+          </form>
+          
               <div class="login-signup">
                 <span class="text">Not a member?
                     <a href="#" class="text signup-link">Signup Now</a>
                 </span>
             </div>
-
-              <div class="input-field button">
-                  <input type="button" value="Login">
-              </div>
+      </div>
 
               
-              
+
+      <div class="form signup">
     <div class="title">Registration</div>
     <div class="content">
       <form action="#">
@@ -60,7 +63,7 @@
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <input type="email" placeholder="Enter your email" required>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
@@ -68,11 +71,11 @@
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required>
+            <input type="password" placeholder="Enter your password" required>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="text" placeholder="Confirm your password" required>
+            <input type="password" placeholder="Confirm your password" required>
           </div>
         </div>
         <div class="gender-details">
@@ -95,12 +98,22 @@
             </label>
           </div>
         </div>
+
+        <div class="checkbox-text">
+          <div class="checkbox-content">
+              <input type="checkbox" id="termCon">
+              <label for="termCon" class="text">I accepted all terms and conditions</label>
+          </div>
+      </div>
+      
         <div class="button">
           <input type="submit" value="Register">
         </div>
       </form>
     </div>
   </div>
+
+  <script src="script.js"></script>
 
 </body>
 </html>

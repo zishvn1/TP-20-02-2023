@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +11,19 @@
     body {
         padding-top: 50px;
     }
-
-    h1 {
+    
+    h1{
         text-align: center;
         font-size: 10em;
     }
 </style>
 
 <body>
-    <?php include 'navbar.php' ?>
+    <?php include 'navbar.php'?>
 
-    <h1>Basket</h1>
+    <h1>Sign up</h1>
 
     <?php include 'footer.php' ?>
 
 </body>
-
 </html>
