@@ -34,15 +34,15 @@
         display: flex;
     }
 
-    .box1 h2{
+    .box1 h2 {
         color: #bf1E2E;
     }
 
-    .box2 h2{
+    .box2 h2 {
         color: #bf1E2E;
     }
 
-    .box3 h2{
+    .box3 h2 {
         color: #bf1E2E;
     }
 
@@ -109,18 +109,18 @@
     </div>
     <div class="cover">
         <div class="box1">
-            <h2>BOX 1</h2>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h2>Why Choose Us?</h2>
+            <p>"Aston Autos prides itself on offering a wide range of high-quality vehicles that have been thoroughly inspected and maintained to ensure maximum reliability and safety. Whether you're in the market for a sleek sports car or a spacious SUV, Aston Autos has something to suit your needs and budget. Additionally, the team at Aston Autos is committed to providing exceptional customer service, from helping you find the perfect car to securing financing and ensuring a seamless buying process.</p>
         </div>
 
         <div class="box2">
-            <h2>BOX 2</h2>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h2>Our Promises:</h2>
+            <p>1. Quality assurance: Promise that the car has been thoroughly inspected and is of high quality. 2. Fair pricing: Promise to offer fair and competitive pricing. 3. Customer service: Promise to provide excellent customer service throughout the buying process and beyond. 4. Delivery and after-sales support: Promise to deliver the car promptly and to provide after-sales support, such as maintenance and repairs</p>
         </div>
 
         <div class="box3">
-            <h2>BOX 3</h2>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h2>Reviews</h2>
+            <p>"I recently purchased a car from a website and was blown away by the exceptional service I received. The website was easy to navigate and had detailed information on each vehicle." - John. "I had a great experience buying a car from this website. The website was well-designed and provided all the information I needed to make an informed decision. The customer service was excellent, and the sales representative was very helpful throughout the entire process." - Steve</p>
         </div>
     </div>
 
@@ -166,17 +166,19 @@
             <img src="images/person.png">
             <h3>OLUWATOMISIN OGUNNUSI</h3>
             <p>Back-end</p>
-        </div><div class="team-member">
+        </div>
+        <div class="team-member">
             <img src="images/person.png">
             <h3>XAVIER WALKER</h3>
             <p>Back-end</p>
-        </div><div class="team-member">
+        </div>
+        <div class="team-member">
             <img src="images/person.png">
             <h3>PANTELIS XIOUROUPPAS</h3>
             <p>Back-end</p>
-    </div>
+        </div>
 
-    <?php include 'footer.php' ?>
+        <?php include 'footer.php' ?>
 
 </body>
 
