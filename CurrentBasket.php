@@ -18,6 +18,18 @@ include("connect.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <style>
+        .tbl-cart {
+            font-size: 0.9em;
+        }
+
+        .tbl-cart th {
+            font-weight: normal;
+        }
+        th,td,tr{
+            font-size: 3vw;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,61 +38,79 @@ include("connect.php");
 
     </div>
 
-   
-  
+
+
     </div>
-    <i class="fa fa-shopping-cart" style="font-size:36px"><?php echo count($_SESSION['cart']);?></div> 
-    <br><br><br>
-
-    <main>
-    <?php 
-	$totalCost = 0;
-    if(empty($_SESSION['cart'])){
-        echo 'Shopping cart empty';
-    }
-	
-        if(!empty($_SESSION['cart'])){
-            $sql = "SELECT * FROM products WHERE id IN (".implode(',',$_SESSION['cart']).")";;
-            $all_products = $con->query($sql);
-            $index =0;
-            if(!isset($_SESSION['qty_array'])){
-                $_SESSION['qty_array'] = array_fill(0,count($_SESSION['cart']),1);
+    <i class="fa fa-shopping-cart" style="font-size:36px"><?php echo count($_SESSION['cart']); ?></div>
+        <br><br><h1>Shopping bag</h1><br>
+        
+        <main>
+            <?php
+            $totalCost = 0;
+            if (empty($_SESSION['cart'])) {
+                echo 'Shopping cart empty';
             }
-             while ($row = mysqli_fetch_assoc($all_products)) {  $id = $row['id'];?>
-                <div class="vidbox">
-                    <div class="card">
-                        <div class="caption">
-    <a href="DeleteItemFromBasket.php?id=<?php echo $row['id']?>"><button type="button" class="btn-close" aria-label="Close"></button></a>
-    <a href="AddToBasketInBasket.php?id=<?php echo $row['id']?>"><span class="glyphicon glyphicon-plus" style="color: grey;"></span></a>
 
-                            <p class="price"><?php echo $row['name']; ?></p>
-                            <p class="price">£<?php echo $row['price']; ?></p>
-                            <p>Quantity: <?php echo count(array_keys($_SESSION['cart'],$id)); ?></p>
-                            <?php $totalCost = $totalCost + $row['price'] * count(array_keys($_SESSION['cart'],$id))?>
-                        </div>
-    
-    
-                    </div>
-                </div>
-            <?php } 
-      echo 'Total £'.$totalCost;    }
-			?>
-                        
+            if (!empty($_SESSION['cart'])) {
+                $sql = "SELECT * FROM products WHERE id IN (" . implode(',', $_SESSION['cart']) . ")";;
+                $all_products = $con->query($sql);
+                $index = 0;
+                if (!isset($_SESSION['qty_array'])) {
+                    $_SESSION['qty_array'] = array_fill(0, count($_SESSION['cart']), 1);
+                } ?>
 
-<br> <br>
-            <a href="DeleteWholeCart.php">Delete Whole Cart</a><br><br>
+
+                <div style="position:absolute; margin-left:15%;">
+                <table class="table"cellpadding="100" cellspacing="1" style="margin-left:auto; margin-right:auto;" >
+                    <tbody>
+                        <tr>
+                            <th style="text-align:center;">Name</th>
+                            <th style="text-align:center;">Unit Price</th>
+                            <th style="text-align:center;">Quantity</th>
+                            <th style="text-align:center;">Add/Remove</th>
+                        </tr> <?php
+
+                                while ($row = mysqli_fetch_assoc($all_products)) {
+                                    $id = $row['id']; ?>
+
+
+                            <tr>
+                                <td style="text-align:center;"><?php echo $row['name']; ?></td>
+                                <td style="text-align:center;">£<?php echo $row['price']; ?></td>
+                                <td style="text-align:center;"><?php echo count(array_keys($_SESSION['cart'], $id)); ?></td>
+                                <td style="text-align:center;"> <a href="AddToBasketInBasket.php?id=<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-plus" style="color: grey;"></span></a>
+                                    <a href="DeleteItemFromBasket.php?id=<?php echo $row['id'] ?>"><button type="button" class="btn-close" aria-label="Close"></button></a>
+                                </td>
+                            </tr>
+                    </tbody>
+             
+
+
+
+                    <?php $totalCost = $totalCost + $row['price'] * count(array_keys($_SESSION['cart'], $id)) ?>
+</div>
+            <?php }
+
+            
+                                // echo 'Total £' . $totalCost;
+                            }
+            ?>
+
+<tr>
+<td colspan="2" align="right">Total:</td>
+<td style ="align:right"><?php echo '£'.$totalCost; ?></td>
+<td><a href="Checkout.php"><button>Checkout securely</button></a></td>
+
+</tr>
+
+   </table>
+   <div  style="float: right;">
+            <br> <br>
             <a href="HomePage.php">back</a>
             <br><br>
-            <a href="HomePage.php"><button disabled id="Checkout">Checkout securely</button></a>
-
-    </main>
+</div>
+        </main>
 
 </body>
-<script>
-    <?php 
-        if(count($_SESSION_['cart']) > 0){
-       ?>    document.getElementById("Checkout").disabled = false; 
-        <?php } ?>
-    
-</script>
+
 </html>
