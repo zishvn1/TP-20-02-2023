@@ -6,7 +6,7 @@
 <?php
 session_start();
 //disallows any and all access to this page UNLESS you sign in
-include("connect.php");
+//include("connect.php");
 
 ?>
     <meta charset="UTF-8">
