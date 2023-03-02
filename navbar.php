@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    
+<?php
+session_start();
+//disallows any and all access to this page UNLESS you sign in
+//include("connect.php");
+
+?>
     <meta charset="UTF-8">
     <title>Navbar</title>
     <style type="text/css">
@@ -98,7 +105,7 @@
             <li><a href="products.php">CARS FOR SALE</a></li>
             <li><a href="aboutus.php">ABOUT US</a></li>
             <li><a href="contactdetails.php">CONTACT US</a></li>
-            <li><a href="basket.php">BASKET</a></li>
+            <li><a href="Currentbasket.php">BASKET</a></li>
             <button class="button1" type="button" onclick=window.parent.location.href='login.php' target='_parent'>LOG IN</button>
             <button class="button2" type="button" onclick=window.parent.location.href='signup.php' target='_parent'>SIGN UP</button>
         </ul>
