@@ -32,3 +32,29 @@ const container = document.querySelector(".container"),
     login.addEventListener("click", ( )=>{
         container.classList.remove("active");
     });
+
+    function validateForm() {
+        var password = document.getElementById("password").value;
+        var name = document.getElementById("name");
+        var username = document.getElementById("username");
+        var confpassword = documen.getElementById("confpassword");
+        var email = document.getElementById("email");
+
+        if (email == "") {
+            alert("Email field cannot be empty");
+            return false;
+        }
+        if (name == "") {
+            alert("Please enter your name!");
+            return false;
+        }
+        if (username == "") {
+             alert("Please enter a username!");
+            return false;
+        }
+        if (password == "") {
+            alert("Password field cannot be empty");
+            return false;
+        }
+         return true;
+    }
