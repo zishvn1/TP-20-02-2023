@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($email) && !empty($password) && !is_numeric($email)) {
 
         //Prepare the SQL statement
-        $stmt = $con->prepare("SELECT * FROM `employee` WHERE email = ? LIMIT 1");
+        $stmt = $con->prepare("SELECT * FROM `employees` WHERE email = ? LIMIT 1");
 
         //Bind the parameters and execute the statement
         $stmt->bind_param("s", $email);
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         //Invalid username or password
         echo "<script> 
-            alert ('Wrong Username and Password!!!');window.location='login.php'    
+            alert ('Wrong Email or Password!!!');window.location='login.php'    
             </script>";
     } else {
         //Invalid input
