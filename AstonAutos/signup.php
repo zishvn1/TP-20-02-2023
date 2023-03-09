@@ -139,10 +139,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="script/script.js">
     function validateForm() {
         var password = document.getElementById("password").value;
-        var name = document.getElementById("name");
-        var username = document.getElementById("username");
-        var confpassword = documen.getElementById("confpassword");
-        var email = document.getElementById("email");
+        var name = document.getElementById("name").value;
+        var username = document.getElementById("username").value;
+        var confpassword = documen.getElementById("confpassword")value;
+        var email = document.getElementById("email")value;
 
         if (email == "") {
             alert("Email field cannot be empty");
