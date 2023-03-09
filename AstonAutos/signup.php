@@ -86,8 +86,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="text" name="phone" placeholder="Enter your number" required>
                         </div>
                         <div class="input-box">
+                            <span class="details">Username</span>
+                            <input type="text" name="uname" placeholder="Enter your username" required>
+                        </div>
+                        <div class="input-box">
                             <span class="details">Password</span>
                             <input type="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Confirm Number</span>
+                            <input type="text" name="conpassword" placeholder="Enter your password" required>
                         </div>
                     </div>
                     <div class="input-details">
