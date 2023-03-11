@@ -1,6 +1,7 @@
 <?php
-
+//Start the session
 session_start();
+//Include database config file
 include("connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -25,14 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $user_data = mysqli_fetch_assoc($result);
 
                 //Verify the hashed password
-                if (password_verify($password, $user_data['password'])) {
+                if (password_verify($password, $user_data['Password'])) {
 
                     //Store the user ID and email in the session
                     $_SESSION['id'] = $user_data['id'];
                     $_SESSION['email'] = $email;
 
                     //Redirect the user to the dashboard page
-                    echo "<script> alert ('You have entered correct credentials');window.location='index.php'</script>";
+                    echo "<script> alert ('You have entered correct credentials');window.location='customerloggedIn.php'</script>";
                     die();
                 }
             }
