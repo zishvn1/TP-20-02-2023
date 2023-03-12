@@ -1,6 +1,4 @@
 <?php
-//Start the session
-session_start();
 //Include database config file
 include("connect.php");
 
@@ -27,7 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 //Verify the hashed password
                 if (password_verify($password, $user_data['Password'])) {
-
+                    
+                    //Start the session
+                    session_start();
                     //Store the user ID and email in the session
                     $_SESSION['id'] = $user_data['id'];
                     $_SESSION['email'] = $email;
