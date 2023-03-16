@@ -62,7 +62,7 @@ public class CustomerForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel4.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel4.setBackground(new java.awt.Color(191, 30, 46));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
@@ -149,7 +149,7 @@ public class CustomerForm extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CustomerExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,9 +190,9 @@ public class CustomerForm extends javax.swing.JFrame {
 
         CustomerFormAddButton.setBackground(new java.awt.Color(255, 255, 255));
         CustomerFormAddButton.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
-        CustomerFormAddButton.setForeground(new java.awt.Color(102, 0, 0));
+        CustomerFormAddButton.setForeground(new java.awt.Color(191, 30, 46));
         CustomerFormAddButton.setText("Add Customer");
-        CustomerFormAddButton.setBorder(new javax.swing.border.MatteBorder(null));
+        CustomerFormAddButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         CustomerFormAddButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CustomerFormAddButtonMouseClicked(evt);
@@ -206,10 +206,10 @@ public class CustomerForm extends javax.swing.JFrame {
 
         CustomerDeleteButton.setBackground(new java.awt.Color(255, 255, 255));
         CustomerDeleteButton.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
-        CustomerDeleteButton.setForeground(new java.awt.Color(102, 0, 0));
+        CustomerDeleteButton.setForeground(new java.awt.Color(191, 30, 46));
         CustomerDeleteButton.setText("Delete");
         CustomerDeleteButton.setToolTipText("");
-        CustomerDeleteButton.setBorder(new javax.swing.border.MatteBorder(null));
+        CustomerDeleteButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         CustomerDeleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CustomerDeleteButtonMouseClicked(evt);
@@ -223,10 +223,10 @@ public class CustomerForm extends javax.swing.JFrame {
 
         UpdateCustomerTable.setBackground(new java.awt.Color(255, 255, 255));
         UpdateCustomerTable.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
-        UpdateCustomerTable.setForeground(new java.awt.Color(102, 0, 0));
+        UpdateCustomerTable.setForeground(new java.awt.Color(191, 30, 46));
         UpdateCustomerTable.setText("Update Table");
         UpdateCustomerTable.setToolTipText("");
-        UpdateCustomerTable.setBorder(new javax.swing.border.MatteBorder(null));
+        UpdateCustomerTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         UpdateCustomerTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 UpdateCustomerTableMouseClicked(evt);
@@ -254,7 +254,7 @@ public class CustomerForm extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(CustomerDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,11 +344,11 @@ public class CustomerForm extends javax.swing.JFrame {
                 }
 
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ProductsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ToyotaForm.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductsForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ToyotaForm.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -356,8 +356,9 @@ public class CustomerForm extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
-        ProductsForm MyProductsForm = new ProductsForm();
+        CarDatabaseForm MyProductsForm = new CarDatabaseForm();
         MyProductsForm.setVisible(true);
+
         setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
 
@@ -384,9 +385,8 @@ public class CustomerForm extends javax.swing.JFrame {
 
     private void CustomerDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerDeleteButtonActionPerformed
         // TODO add your handling code here:
-        
-         //Remove button
 
+        //Remove button
         DefaultTableModel d1 = (DefaultTableModel) CustomerTable.getModel();
         int selectIndex = CustomerTable.getSelectedRow();
 
@@ -405,12 +405,11 @@ public class CustomerForm extends javax.swing.JFrame {
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Record has been deleted!!!");
                 table_update();
-            
 
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ProductsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ToyotaForm.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
-                Logger.getLogger(ProductsForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ToyotaForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_CustomerDeleteButtonActionPerformed

@@ -72,13 +72,13 @@ public class AddCustomerForm extends javax.swing.JFrame {
 
         jLabel12.setBackground(new java.awt.Color(102, 0, 0));
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel12.setForeground(new java.awt.Color(191, 30, 46));
         jLabel12.setText("Name: ");
         jLabel12.setToolTipText("");
 
         jLabel13.setBackground(new java.awt.Color(102, 0, 0));
         jLabel13.setFont(new java.awt.Font("Sitka Heading", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel13.setForeground(new java.awt.Color(191, 30, 46));
         jLabel13.setText("Create A New User");
 
         NameTextBox.setBackground(new java.awt.Color(255, 255, 255));
@@ -89,7 +89,7 @@ public class AddCustomerForm extends javax.swing.JFrame {
 
         jLabel14.setBackground(new java.awt.Color(102, 0, 0));
         jLabel14.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel14.setForeground(new java.awt.Color(191, 30, 46));
         jLabel14.setText("Email:");
         jLabel14.setToolTipText("");
 
@@ -98,13 +98,13 @@ public class AddCustomerForm extends javax.swing.JFrame {
 
         jLabel15.setBackground(new java.awt.Color(102, 0, 0));
         jLabel15.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel15.setForeground(new java.awt.Color(191, 30, 46));
         jLabel15.setText("Password:");
         jLabel15.setToolTipText("");
 
         jLabel16.setBackground(new java.awt.Color(102, 0, 0));
         jLabel16.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel16.setForeground(new java.awt.Color(191, 30, 46));
         jLabel16.setText("Phone:");
         jLabel16.setToolTipText("");
 
@@ -113,7 +113,7 @@ public class AddCustomerForm extends javax.swing.JFrame {
 
         jLabel17.setBackground(new java.awt.Color(102, 0, 0));
         jLabel17.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel17.setForeground(new java.awt.Color(191, 30, 46));
         jLabel17.setText("Address:");
         jLabel17.setToolTipText("");
 
@@ -127,7 +127,7 @@ public class AddCustomerForm extends javax.swing.JFrame {
 
         jLabel18.setBackground(new java.awt.Color(102, 0, 0));
         jLabel18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel18.setForeground(new java.awt.Color(191, 30, 46));
         jLabel18.setText("Postcode:");
         jLabel18.setToolTipText("");
 
@@ -136,9 +136,9 @@ public class AddCustomerForm extends javax.swing.JFrame {
 
         CreateUserButton.setBackground(new java.awt.Color(255, 255, 255));
         CreateUserButton.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
-        CreateUserButton.setForeground(new java.awt.Color(102, 0, 0));
+        CreateUserButton.setForeground(new java.awt.Color(191, 30, 46));
         CreateUserButton.setText("Create User");
-        CreateUserButton.setBorder(new javax.swing.border.MatteBorder(null));
+        CreateUserButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         CreateUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CreateUserButtonMouseClicked(evt);
@@ -152,9 +152,9 @@ public class AddCustomerForm extends javax.swing.JFrame {
 
         ExitButton.setBackground(new java.awt.Color(255, 255, 255));
         ExitButton.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
-        ExitButton.setForeground(new java.awt.Color(102, 0, 0));
+        ExitButton.setForeground(new java.awt.Color(191, 30, 46));
         ExitButton.setText("Exit");
-        ExitButton.setBorder(new javax.swing.border.MatteBorder(null));
+        ExitButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitButtonMouseClicked(evt);
@@ -304,9 +304,9 @@ public class AddCustomerForm extends javax.swing.JFrame {
             NameTextBox.requestFocus();
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProductsForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ToyotaForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ProductsForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ToyotaForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_CreateUserButtonActionPerformed
 
