@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // SQL injection prevention 
-    $stmt = $con->prepare("SELECT * FROM `users` WHERE email = ?");
+    $stmt = $con->prepare("SELECT * FROM `customers` WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script> alert('Email already in use'); window.location = 'signup.php'</script>";
         exit();
     } else {
-        $stmt = $con->prepare("INSERT INTO `users` (name, email, password, phone, gender) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $con->prepare("INSERT INTO `customers` (name, email, password, phone, gender) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $name, $email, $hashed_password, $phone, $gender);
         $stmt->execute();
         if ($stmt->affected_rows > 0) {

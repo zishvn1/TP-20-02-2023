@@ -1,25 +1,41 @@
 <?php
 session_start();
 include("connect.php");
+if (!isset($_SESSION['id'])) {
+    header("Location:adminlogin.php");
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $phone = $_POST['phone'];
-    $gender = $_POST['gender'];
+    $make = $_POST['make'];
+    $model = $_POST['model'];
+    $price = $_POST['price'];
+    $year = $_POST['year'];
+    $fueltype = $_POST['fueltype'];
+    $color = $_POST['color'];
+    $breakhorsepower = $_POST['breakhorsepower'];
+    $drivetype = $_POST['drivetype'];
+    $quantity = $_POST['quantity'];
+    $mileage = $_POST['mileage'];
+    $conditionofcar = $_POST['conditionofcar'];
 
 
     // Filtering and sanitizing the variables for security
-    $name = strip_tags(mysqli_real_escape_string($con, trim($name)));
-    $email = strip_tags(mysqli_real_escape_string($con, trim($email)));
-    $password = strip_tags(mysqli_real_escape_string($con, trim($password)));
-    $phone = strip_tags(mysqli_real_escape_string($con, trim($phone)));
-    $gender = strip_tags(mysqli_real_escape_string($con, trim($gender)));
+    $make  = strip_tags(mysqli_real_escape_string($con, trim($make)));
+    $model = strip_tags(mysqli_real_escape_string($con, trim($model)));
+    $price = strip_tags(mysqli_real_escape_string($con, trim($price)));
+    $year = strip_tags(mysqli_real_escape_string($con, trim($year)));
+    $fueltype = strip_tags(mysqli_real_escape_string($con, trim($fueltype)));
+    $color = strip_tags(mysqli_real_escape_string($con, trim($color)));
+    $breakhorsepower = strip_tags(mysqli_real_escape_string($con, trim($breakhorsepower)));
+    $drivetype = strip_tags(mysqli_real_escape_string($con, trim($drivetype)));
+    $quantity = strip_tags(mysqli_real_escape_string($con, trim($quantity)));
+    $mileage = strip_tags(mysqli_real_escape_string($con, trim($mileage)));
+    $conditionofcar = strip_tags(mysqli_real_escape_string($con, trim($conditionofcar)));
+
 
     // SQL injection prevention 
-    $stmt = $con->prepare("SELECT * FROM `users` WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $stmt = $con->prepare("SELECT * FROM `toyota` WHERE id = ?");
+    $stmt->bind_param("ssssssssssss", $make, $model, $price, $price, $year, $fueltype, $color, $breakhorsepower, $drivetype, $quantity, $mileage, $conditionofcar);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -27,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script> alert('Email already in use'); window.location = 'signup.php'</script>";
         exit();
     } else {
-        $stmt = $con->prepare("INSERT INTO `users` (name, email, password, phone, gender) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $con->prepare("INSERT INTO `toyota` (make, model, price, year, fueltype, color, breakhorsepower, drivetype, quantity, mileage, conditionofcar) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("sssss", $name, $email, $hashed_password, $phone, $gender);
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
-            echo "<script> alert('Registration Successful'); window.location = 'login.php'</script>";
+            echo "<script> alert('Car succesfully added to the database!!!'); window.location = 'adminaddcar.php'</script>";
             exit();
         } else {
             die(mysqli_errno($con));
@@ -49,14 +65,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
+<style>
+    img {
+        width: 300px;
+    }
+</style>
 
 <body>
-    <?php include 'adminheader.php' ?>
+    <?php include 'adminnavbar.php' ?>
 
     <div class="containerAddInventory ">
         <div class="form signup">
             <div class="content">
-                <span class="title">Add to Inventory </span>
+                <span class="title">Add to Toyota </span>
+                <img src="images/logo-toyota.png">
                 <form method="POST" autocomplete="off">
                     <div class="user-details">
                         <div class="input-box">
@@ -124,42 +146,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                     <div class="input-details">
-                        <input type="radio" value="ALL-WHEEL DRIVE" name="drivetype" id="dot-1">
-                        <input type="radio" value="FOUR-WHEEL DRIVE" name="drivetype" id="dot-2">
-                        <input type="radio" value="FRONT-WHEEL DRIVE" name="drivetype" id="dot-3">
-                        <input type="radio" value="REAR-WHEEL DRIVE" name="drivetype" id="dot-4">
-                        <span class="gender-title">Select a Drive Type:</span>
-                        <div class="category">
-                            <label for="dot-1">
-                                <span class="dot one"></span>
-                                <span class="gender">AWD</span>
-                            </label>
-                            <label for="dot-2">
-                                <span class="dot two"></span>
-                                <span class="gender">4WD</span>
-                            </label>
-                            <label for="dot-3">
-                                <span class="dot three"></span>
-                                <span class="gender">FWD</span>
-                            </label>
-                            <label for="dot-4">
-                                <span class="dot four"></span>
-                                <span class="gender">RWD</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="input-details">
-                        <input type="radio" value="Automatic" name="transmission" id="dot-1">
-                        <input type="radio" value="Manual" name="transmission" id="dot-2">
+                        <input type="radio" value="Automatic" name="drivetype" id="dot-5">
+                        <input type="radio" value="Manual" name="drivetype" id="dot-6">
                         <span class="gender-title">Select a Transmission Type:</span>
                         <div class="category">
-                            <label for="dot-1">
-                                <span class="dot one"></span>
+                            <label for="dot-5">
+                                <span class="dot five"></span>
                                 <span class="gender">Automatic</span>
                             </label>
-                            <label for="dot-2">
-                                <span class="dot two"></span>
+                            <label for="dot-6">
+                                <span class="dot six"></span>
                                 <span class="gender">Manual</span>
                             </label>
 
@@ -167,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
                     <div class="button">
-                        <input type="submit" value="Register">
+                        <input type="submit" value="Submit">
                         <input type="reset" value="Clear" />
                     </div>
             </div>
@@ -175,10 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             </form>
         </div>
-        <div class="login-signup">
-            <span class="text">Already have an account?<a href="login.php" class="text signup-link"> Login</a></span>
-        </div>
-    </div>
+
     </div>
 
 
