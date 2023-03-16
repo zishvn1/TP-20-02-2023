@@ -25,17 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Password hashing
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Email validation
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<script> alert('Invalid email address'); window.location = 'signup.php'</script>";
-        exit();
-    }
+
 
     // SQL injection prevention 
     $stmt = $con->prepare("SELECT * FROM `customers` WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
+
+    // Email validation
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script> alert('Invalid email address'); window.location = 'signup.php'</script>";
+        exit();
+    }
 
     if ($result->num_rows > 0) {
         echo "<script> alert('Email already in use'); window.location = 'signup.php'</script>";

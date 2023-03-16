@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($email) && !empty($password) && !is_numeric($email)) {
 
         //Prepare the SQL statement
-        $stmt = $con->prepare("SELECT * FROM `users` WHERE email = ? LIMIT 1");
+        $stmt = $con->prepare("SELECT * FROM `customers` WHERE email = ? LIMIT 1");
 
         //Bind the parameters and execute the statement
         $stmt->bind_param("s", $email);
@@ -50,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 

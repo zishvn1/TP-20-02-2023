@@ -26,7 +26,7 @@ if (!isset($_SESSION['id'])) {
 </head>
 
 <body>
-    <?php include 'adminheader.php' ?>
+    <?php include 'adminnavbar.php' ?>
 
     <!-- USERS TABLE -->
 
@@ -48,7 +48,7 @@ if (!isset($_SESSION['id'])) {
             </thead>
             <tbody>
                 <?php
-                $sql = " SELECT * FROM `users` ";
+                $sql = " SELECT * FROM `customers` ";
                 $result = mysqli_query($con, $sql);
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -63,7 +63,9 @@ if (!isset($_SESSION['id'])) {
                       <td scope="row">' . $id . '</td>
                       <td>' . $name . '</td>
                       <td>' . $email . '</td>
-                      <td>' . $password . '</td>
+                  <div class="change">
+                      <td> ' . $password . ' </td>
+                    </div>
                       <td>' . $phone . '</td>
                       <td>' . $gender . '</td>
 

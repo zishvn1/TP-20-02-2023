@@ -4,11 +4,11 @@ session_start();
 //disallows any and all access to this page UNLESS you sign in
 include("connect.php");
 
-/*if (!isset($_SESSION['id'])) 
+if (!isset($_SESSION['id'])) 
 {
     header("Location:adminlogin.php");
 }
-*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@ include("connect.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <title>Admin Page</title>
+    <title>Toyota</title>
 
     <style>
 
@@ -27,16 +27,14 @@ include("connect.php");
 </head>
 
 <body>
-    <?php include 'adminheader.php' ?>
+    <?php include 'adminnavbar.php' ?>
+
+
     <div class="containerAdminPage">
-
-
         <a href="adminaddcar.php">
-            <button class="adminMenuButtons ">Add to Inventory</button>
+            <button class="adminMenuButtons">Add to Inventory</button>
         </a>
     </div>
-
-
 
     <!-- PRODUCT TABLE -->
     <div class="containerAdminPage">
@@ -65,20 +63,38 @@ include("connect.php");
                 $result = mysqli_query($con, $sql);
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $idCart = $row['id'];
+                        $idToyota = $row['id'];
+                        $make = $row['make'];
+                        $model = $row['model'];
+                        $price = $row['price'];
+                        $year = $row['year'];
+                        $fueltype = $row['fueltype'];
+                        $color = $row['color'];
+                        $breakhorsepower = $row['breakhorsepower'];
+                        $drivetype = $row['drivetype'];
+                        $quantity = $row['quantity'];
+                        $mileage = $row['mileage'];
+                        $conditionofcar = $row['conditionofcar'];
 
 
                         echo '
                         <tr>
-                      <th scope="row">' . $idCart . '</th>
-                      <td> <img src="images/' . $image . '"/></d>
-                      <td>' . $name . '</td>
+                      <td scope="row">' . $idToyota . '</td>
+                      <td>' . $make . '</td>
+                      <td>' . $model . '</td>
                       <td>£' . $price . '</td>  
-                      <td>' . $information . '</td>
+                      <td>' . $year . '</td>
+                      <td>' . $fueltype . '</td>
+                      <td>' . $color . '</td>
+                      <td>' . $breakhorsepower . '</td>
+                      <td>' . $drivetype . '</td>
+                      <td>' . $quantity . '</td>
+                      <td>' . $mileage . '</td>
+                      <td>' . $conditionofcar . '</td>
 
                       <td>
-                      <a class="button-update" title="Relevant Title" href = "productupdate.php? idUpdateCart= ' . $idCart . '">Update</a>
-                      <a class="button-delete" title="Relevant Title" href = "deleteproduct.php? idDeleteCart=' . $idCart . '" >Delete</a>
+                      <a class="button-update" title="Relevant Title" href = "productupdate.php? idUpdateCart= ' . $idToyota . '">Update</a>
+                      <a class="button-delete" title="Relevant Title" href = "deleteproduct.php? idDeleteCart=' . $idToyota . '" >Delete</a>
                       
                       </tr>';
                     }
@@ -92,6 +108,8 @@ include("connect.php");
 
     </div>
     <!-- END OF CART TABLE -->
+
+
 
 </body>
 

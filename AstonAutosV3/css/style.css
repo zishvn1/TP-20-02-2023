@@ -116,7 +116,13 @@ form .category label .dot {
 #dot-1:checked ~ .category label .one,
 #dot-2:checked ~ .category label .two,
 #dot-3:checked ~ .category label .three,
-#dot-4:checked ~ .category label .four {
+#dot-4:checked ~ .category label .four,
+#dot-5:checked ~ .category label .five,
+#dot-6:checked ~ .category label .six,
+#dot-7:checked ~ .category label .seven,
+#dot-8:checked ~ .category label .eight,
+#dot-9:checked ~ .category label .nine
+ {
   background: #0044ff;
   border-color: #d9d9d9;
 }
@@ -304,15 +310,16 @@ a:visited {
 /*Admin Pages table settings*/
 
 .containerAdminTable {
-  width: 100%;
-  background-color: #e9abab;
-  padding: 25px 30px;
-  border-radius: 5px;
+  max-width: 100%;
+  margin: auto;
+
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  position: absolute;
 }
 .admin-table {
   border-collapse: collapse;
   margin: 5% 0;
+  margin-top: 300px;
   font-size: 1.4em;
   font-family: Helvetica;
   min-width: 400px;
@@ -321,8 +328,16 @@ a:visited {
 
 .admin-table thead tr {
   background-color: #000000;
-  color: #000000;
+  color: #ffffff;
   text-align: left;
+}
+
+.admin-table tbody tr:last-of-type {
+  border-bottom: 10px solid #ffffff;
+}
+
+.admin-table tbody tr:hover {
+  background-color: rgb(87, 86, 86);
 }
 
 .admin-table th {
@@ -332,6 +347,13 @@ a:visited {
 .admin-table td {
   padding: 12px 15px;
   color: rgb(0, 0, 0);
+}
+
+.change {
+  max-width: 20px; /* or any value you choose */
+  overflow: hidden;
+  text-overflow: ellipsis; /* optional, adds an ellipsis if content is truncated */
+  white-space: nowrap; /* optional, prevents text from*/
 }
 
 .admin-table tbody tr:last-of-type {
