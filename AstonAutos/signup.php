@@ -94,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="password" name="password" placeholder="Enter your password" required>
                         </div>
                         <div class="input-box">
-                            <span class="details">Confirm Number</span>
-                            <input type="text" name="conpassword" placeholder="Enter your password" required>
+                            <span class="details">Confirm Password</span>
+                            <input type="password" name="conpassword" placeholder="Enter your password" required>
                         </div>
                     </div>
                     <div class="input-details">
