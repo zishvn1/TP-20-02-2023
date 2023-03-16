@@ -25,7 +25,7 @@ if (!isset($_SESSION['id'])) {
         <img src="images/indexbmw.png" class="mainimg">
         <div class="image-text-main">
             <p>We Provide <span class="highlight">Luxury Cars</span></p>
-            <p>at low cost.</p>
+            <p>at Low cost.</p>
         </div>
         <div class="image-text-sec">
             <p>SHOP BY BRANDS:</p>
