@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $phone = $_POST['phone'];
     $gender = $_POST['gender'];
-
+    $confpassword = $_POST['confpassword'];
 
     // Filtering and sanitizing the variables for security
     $name = strip_tags(mysqli_real_escape_string($con, trim($name)));
@@ -16,11 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = strip_tags(mysqli_real_escape_string($con, trim($password)));
     $phone = strip_tags(mysqli_real_escape_string($con, trim($phone)));
     $gender = strip_tags(mysqli_real_escape_string($con, trim($gender)));
+    $confpassword = strip_tags(mysqli_real_escape_string($con, trim($confpassword)));
 
     // Password requirements
     if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@!%*?&])[A-Za-z\d$@!%*?&]{8,}$/', $password)) {
         echo "<script> alert('Password must contain at least 8 characters including uppercase letters, lowercase letters, numbers, and special characters'); window.location = 'signup.php'</script>";
         exit();
+    }
+    //Double password verification
+    if($password != $confpassword){
+        echo "<script> alert('Passwords must match!'); window.location = 'signup.php'</script>";
     }
     // Password hashing
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -95,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <div class="input-box">
                             <span class="details">Confirm Password</span>
-                            <input type="password" name="conpassword" placeholder="Enter your password" required>
+                            <input type="password" name="confpassword" placeholder="Enter your password" required>
                         </div>
                     </div>
                     <div class="input-details">
