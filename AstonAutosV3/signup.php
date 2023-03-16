@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $phone = $_POST['phone'];
     $gender = $_POST['gender'];
-
+    $confpassword = $_POST['confpassword'];
 
     // Filtering and sanitizing the variables for security
     $name = strip_tags(mysqli_real_escape_string($con, trim($name)));
@@ -16,11 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = strip_tags(mysqli_real_escape_string($con, trim($password)));
     $phone = strip_tags(mysqli_real_escape_string($con, trim($phone)));
     $gender = strip_tags(mysqli_real_escape_string($con, trim($gender)));
+    $confpassword = strip_tags(mysqli_real_escape_string($con, trim($confpassword)));
 
     // Password requirements
     if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@!%*?&])[A-Za-z\d$@!%*?&]{8,}$/', $password)) {
         echo "<script> alert('Password must contain at least 8 characters including uppercase letters, lowercase letters, numbers, and special characters'); window.location = 'signup.php'</script>";
         exit();
+    }
+     //Double password verification
+    if($password != $confpassword){
+        echo "<script> alert('Passwords must match!'); window.location = 'signup.php'</script>";
     }
     // Password hashing
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -67,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <img src="images/logo-removebg.png" />
     <div class="container">
         <div class="form signup">
             <div class="content">
@@ -87,8 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="text" name="phone" placeholder="Enter your number" required>
                         </div>
                         <div class="input-box">
+                            <span class="details">Username</span>
+                            <input type="text" name="uname" placeholder="Enter your username" required>
+                        </div>
+                        <div class="input-box">
                             <span class="details">Password</span>
                             <input type="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Confirm Password</span>
+                            <input type="password" name="confpassword" placeholder="Enter your password" required>
                         </div>
                     </div>
                     <div class="input-details">
@@ -140,10 +152,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="script/script.js">
     function validateForm() {
         var password = document.getElementById("password").value;
-        var name = document.getElementById("name");
-        var username = document.getElementById("username");
-        var confpassword = documen.getElementById("confpassword");
-        var email = document.getElementById("email");
+        var name = document.getElementById("name").value;
+        var username = document.getElementById("username").value;
+        var confpassword = documen.getElementById("confpassword")value;
+        var email = document.getElementById("email")value;
 
         if (email == "") {
             alert("Email field cannot be empty");
@@ -158,6 +170,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return false;
         }
         if (password == "") {
+            alert("Password field cannot be empty");
+            return false;
+        }
+        if (confpassword == "") {
             alert("Password field cannot be empty");
             return false;
         }
