@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($email) && !empty($password) && !is_numeric($email)) {
 
         //Prepare the SQL statement
-        $stmt = $con->prepare("SELECT * FROM `employees` WHERE email = ? LIMIT 1");
+        $stmt = $con->prepare("SELECT * FROM `employee` WHERE email = ? LIMIT 1");
 
         //Bind the parameters and execute the statement
         $stmt->bind_param("s", $email);
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $_SESSION['email'] = $email;
 
                     //Redirect the user to the dashboard page
-                    echo "<script> alert ('You have entered correct credentials!!!');window.location='adminpage.php'</script>";
+                    echo "<script> alert ('You have entered correct credentials!!!');window.location='admindashboard.php.php'</script>";
                     die();
                 }
             }
@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         //Invalid username or password
         echo "<script> 
-            alert ('Wrong Email or Password!!!');window.location='login.php'    
+            alert ('Wrong Username and Password!!!');window.location='employeelogin.php'    
             </script>";
     } else {
         //Invalid input
         echo "<script> 
-            alert ('Wrong Input!!!');window.location='login.php'    
+            alert ('Wrong Input!!!');window.location='employeelogin.php'    
             </script>";
     }
 }
@@ -64,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
+    <img src="images/logo-removebg.png" />
     <div class="container">
 
         <span class="title">Employee Login</span>
@@ -93,7 +94,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <a href="adminlogin.php" class="text signup-link">Admin Login</a>
             <a href="employeelogin.php" class="text signup-link">Employee Login</a>
-
+        </div>
+        <span>Are you a Customer?</span>
+        <div class="login-signup">
+            <a href="login.php" class="text signup-link">Customer Login</a>
         </div>
 
 
