@@ -13,8 +13,7 @@ include("navbar.php");
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="Styling.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script defer src="CartFunctionality.js"> </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <script defer src="CartFunctionality.js"> </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -47,21 +46,26 @@ include("navbar.php");
         <!-- Sets the basket total to 0 initially and checks if the cart/basket has any items in it.
         If it is empty then a message specifying the cart is empty is displayed -->
         <?php
-        if (empty($_SESSION['mercedescart'])) {
-        ?><h1 style="padding-left: auto; padding-right:auto; padding-top:10vw"><?php echo 'Shopping cart empty'; ?></h1>
-        <?php }
 
-        // If the users basket is not empty. Display all products from basket including the unit price, Quantity and the ability to update the quantity
-        // The checkout securely button transfers the user
-        if (!empty($_SESSION['mercedescart'])) {
+        if (empty($_SESSION['mercedescart']) && empty($_SESSION['audicart'])) {
+        ?><h1 style="padding-left: auto; padding-right:auto; padding-top:10vw"><?php echo 'Your shopping cart is empty'; ?> </h1>
+        <i class="fa fa-shopping-bag" style="font-size:20vw; color:rgba(73, 79, 83,0.3);"></i>
+        <br><br><button>Continue shopping</button>
+        <?php }
+        if (!empty($_SESSION['mercedescart']) && !empty($_SESSION['audicart'])) {
+            $totalCost = 0;
             $mercedessql = "SELECT * FROM mercedesproducts WHERE mercedesid IN (" . implode(',', $_SESSION['mercedescart']) . ")";;
             $mercedes_products = $con->query($mercedessql);
-            $totalCost = 0;
+            $audisql = "SELECT * FROM audiproducts WHERE audiid IN (" . implode(',', $_SESSION['audicart']) . ")";;
+            $audi_products = $con->query($audisql);
+
             if (!isset($_SESSION['qty_array0'])) {
                 $_SESSION['qty_array0'] = array_fill(0, count($_SESSION['mercedescart']), 1);
             } ?>
 
-
+            <?php if (!isset($_SESSION['qty_array1'])) {
+                $_SESSION['qty_array1'] = array_fill(0, count($_SESSION['audicart']), 1);
+            } ?>
             <div style="position:absolute; margin-left:10%; padding-top:7vw">
                 <table class="table" cellpadding="100" cellspacing="1" style="margin-left:auto; margin-right:auto;">
                     <tbody>
@@ -72,7 +76,6 @@ include("navbar.php");
                             <th style="text-align:center;">Quantity</th>
                             <th style="text-align:center;">Add/Remove</th>
                         </tr> <?php
-
                                 while ($mercedesrow = mysqli_fetch_assoc($mercedes_products)) {
                                     $mercedesid = $mercedesrow['mercedesid']; ?>
 
@@ -85,62 +88,44 @@ include("navbar.php");
                                 <td style="text-align:center;"><a href="AddMercedesItemInBasket.php?id=<?php echo $mercedesrow['mercedesid'] ?>"><span class="glyphicon glyphicon-plus" style="color: grey;"></span></a><a href="DeleteMercedesItemFromBasket.php?id=<?php echo $mercedesrow['mercedesid'] ?>"> <span class="glyphicon glyphicon-minus"></span></button></a>
                                 </td>
                             </tr>
+                            <?php
+                                    while ($audirow = mysqli_fetch_assoc($audi_products)) {
+                                        $audiid = $audirow['audiid']; ?>
+
+
+                                <tr>
+                                    <td style="text-align:center;"><?php echo $audirow['Make']; ?></td>
+                                    <td style="text-align: center;"><?php echo $audirow['Model'] ?></td>
+                                    <td style="text-align:center;">£<?php echo $audirow['price']; ?></td>
+                                    <td style="text-align:center;"><?php echo count(array_keys($_SESSION['audicart'], $audiid)); ?></td>
+                                    <td style="text-align:center;"><a href="AddAudiItemInBasket.php?id=<?php echo $audirow['audiid'] ?>"><span class="glyphicon glyphicon-plus" style="color: grey;"></span></a><a href="DeleteAudiItemFromBasket.php?id=<?php echo $audirow['audiid'] ?>"> <span class="glyphicon glyphicon-minus"></span></button></a>
+                                    </td>
+                                </tr>
                     </tbody>
-                    <!-- Total cost is calculated and displayed -->
-                    <?php $totalCost = $totalCost + $mercedesrow['price'] * count(array_keys($_SESSION['mercedescart'], $mercedesid));
 
-                    ?>
+                <?php  } ?>
 
 
+                </tbody>
+                <!-- Total cost is calculated and displayed -->
+                <?php $totalCost = $totalCost + $mercedesrow['price'] * count(array_keys($_SESSION['mercedescart'], $mercedesid));
 
+                ?>
 
-        
-        <?php }
-
-                                $audisql = "SELECT * FROM audiproducts WHERE audiid IN (" . implode(',', $_SESSION['audicart']) . ")";;
-                                $audi_products = $con->query($audisql);
-                                $index = 0;
-                                if (!isset($_SESSION['qty_array1'])) {
-                                    $_SESSION['qty_array1'] = array_fill(0, count($_SESSION['audicart']), 1);
-                                } ?>
-
-        <?php
-
-            while ($audirow = mysqli_fetch_assoc($audi_products)) {
-                $audiid = $audirow['audiid']; ?>
-
-
+            <?php } ?>
             <tr>
-                <td style="text-align:center;"><?php echo $audirow['Make']; ?></td>
-                <td style="text-align: center;"><?php echo $audirow['Model'] ?></td>
-                <td style="text-align:center;">£<?php echo $audirow['price']; ?></td>
-                <td style="text-align:center;"><?php echo count(array_keys($_SESSION['audicart'], $audiid)); ?></td>
-                <td style="text-align:center;"><a href="AddAudiItemInBasket.php?id=<?php echo $audirow['audiid'] ?>"><span class="glyphicon glyphicon-plus" style="color: grey;"></span></a><a href="DeleteAudiItemFromBasket.php?id=<?php echo $audirow['audiid'] ?>"> <span class="glyphicon glyphicon-minus"></span></button></a>
-                </td>
-            </tr>
-            </tbody>
-            <!-- Total cost is calculated and displayed -->
-            <?php $totalCost = $totalCost + $audirow['price'] * count(array_keys($_SESSION['audicart'], $audiid));
+                <td colspan="2" align="right">Total:</td>
+                <td style="align:right"><?php echo '£' . $totalCost; ?></td>
+                <td><a href="Checkout.php"><button>Checkout securely</button></a></td>
 
+            </tr>
+            <tr><a href="DeleteWholeCart.php">Clear Cart</a></tr>
+                </table>
+            <?php         }
             ?>
 
 
-
-
-            </div>
-    <?php }
-        }
-    ?>
-    <tr>
-        <td colspan="2" align="right">Total:</td>
-        <td style="align:right"><?php echo '£' . $totalCost; ?></td>
-        <td><a href="Checkout.php"><button>Checkout securely</button></a></td>
-
-    </tr>
-
-    </table>
-
-    <div style="float: right;">
+            <div style="float: right;">
     </main>
     <?php include 'footer.php' ?>
 
