@@ -48,9 +48,9 @@ include("navbar.php");
         <?php
 
         if (empty($_SESSION['mercedescart']) && empty($_SESSION['audicart'])) {
-        ?><h1 style="padding-left: auto; padding-right:auto; padding-top:10vw"><?php echo 'Your shopping cart is empty'; ?> </h1>
-        <i class="fa fa-shopping-bag" style="font-size:20vw; color:rgba(73, 79, 83,0.3);"></i>
-        <br><br><button>Continue shopping</button>
+        ?><h1 style="padding-left: auto; padding-right:auto; padding-top:8vw; display: flex; justify-content: center; align-items: center; font-size:6vw;"><?php echo 'Your shopping cart is empty'; ?> </h1>
+        <i class="fa fa-shopping-bag" style="font-size:20vw; color:rgba(73, 79, 83,0.3);  display: flex; justify-content: center; align-items: center;"></i>
+        <br><a style=" display: flex; justify-content: center; align-items: center; font-size:5vw; color:#9c0f0f" href="products.php">Continue shopping</a>
         <?php }
         if (!empty($_SESSION['mercedescart']) && !empty($_SESSION['audicart'])) {
             $totalCost = 0;
