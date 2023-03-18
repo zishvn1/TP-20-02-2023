@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         //Invalid username or password!!
         echo "<script> 
-            alert ('Wrong Username and Password!!!');window.location='login.php'    
+            alert ('Wrong Email or Password!!!');window.location='login.php'    
             </script>";
     } else {
         //Invalid input
