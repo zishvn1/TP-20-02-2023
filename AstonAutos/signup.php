@@ -1,10 +1,11 @@
 <?php
-session_start();
+// session_start();
 include("connect.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $username = $_POST['uname'];
     $password = $_POST['password'];
     $phone = $_POST['phone'];
     $gender = $_POST['gender'];
@@ -13,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Filtering and sanitizing the variables for security
     $name = strip_tags(mysqli_real_escape_string($con, trim($name)));
     $email = strip_tags(mysqli_real_escape_string($con, trim($email)));
+    $username = strip_tags(mysqli_real_escape_string($con, trim($username)));
     $password = strip_tags(mysqli_real_escape_string($con, trim($password)));
     $phone = strip_tags(mysqli_real_escape_string($con, trim($phone)));
     $gender = strip_tags(mysqli_real_escape_string($con, trim($gender)));
@@ -46,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script> alert('Email already in use'); window.location = 'signup.php'</script>";
         exit();
     } else {
-        $stmt = $con->prepare("INSERT INTO `customers` (name, email, password, phone, gender) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $name, $email, $hashed_password, $phone, $gender);
+        $stmt = $con->prepare("INSERT INTO `customers` (name, email, username, password, phone, gender) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $name, $email, $username, $hashed_password, $phone, $gender);
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
             echo "<script> alert('Registration Successful'); window.location = 'login.php'</script>";
