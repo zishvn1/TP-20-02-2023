@@ -160,23 +160,20 @@ include("navbar.php")
         <!-- Checkout form where users are required to enter valid details. E.g. name must only contain letters -->
         <form id="WholeForm" style="padding-top: 10%;" method="post">
             <div id="Form">
-                <!-- <label for="fname"><i class="fa fa-user"></i></label><br> -->
-                <input type="text" name="name" placeholder="Full Name" required><br>
-                <!-- <label for="email"><i class="fa fa-envelope"></i></label> -->
-                <input type="email" name="billingEmail" placeholder="Email" required>
+                <input type="text" name="Name" placeholder="Full Name" required><br>
+                <input type="email" name="Email" placeholder="Email" required>
             </div>
             <div id="boxFull">
                 <div id="Form">
 
-                    <!-- <label for="adress"><i class="fa fa-address-card-o"></i> </label> -->
-                    <input type="text" name="address" placeholder="Address" required>
+                    <input type="text" name="Address" placeholder="Address" required>
                 </div>
             </div>
 
             <div id="Form">
                 <!-- <label for="city"><i class="fa fa-institution"></i></label> -->
                 <input type="text" name="city" placeholder="City" required pattern="[a-z]{3,}+">
-                <input type="text" name="PostCode" placeholder="Postcode" required pattern="[a-zA-Z0-9\s]+">
+                <input type="text" name="Postcode" placeholder="Postcode" required pattern="[a-zA-Z0-9\s]+">
             </div>
 
             <div id="boxFull">
@@ -205,71 +202,72 @@ include("navbar.php")
         </form>
 
         <?php
-        $totalCost = 0;
-        if (empty($_SESSION['cart'])) {
-            echo 'Shopping cart empty';
-        }
 
-        if (!empty($_SESSION['cart'])) {
-            $sql0 = "SELECT * FROM products WHERE id IN (" . implode(',', $_SESSION['cart']) . ")";;
-            $all_products = $con->query($sql0);
-            $index = 0;
-            if (!isset($_SESSION['qty_array'])) {
-                $_SESSION['qty_array'] = array_fill(0, count($_SESSION['cart']), 1);
+        if (isset($_POST['submitBtn'])) {
+            $CustomerId = $_SESSION['id'];
+            $Name = $_POST['Name'];
+            $Email = $_POST['Email'];
+            $Address = $_POST['Address'];
+            $Postcode = $_POST['Postcode'];
+            $PaymentMethod = $_POST['cardnum'];
+            $totalCost = $_SESSION['totalCost'];
+
+            $order = "INSERT INTO `orders`(CustomerId,Name,Email,Address,Postcode,PaymentMethod,OrderTime,TotalCost)
+                VALUES('$CustomerId','$Name','$Email','$Address','$Postcode','$PaymentMethod',CURRENT_TIME(),'$totalCost')";
+            $orderResult = mysqli_query($con, $order);
+            $OrderId = mysqli_insert_id($con);
+
+            if (!empty($_SESSION['mercedescart'])) {
+                $mercedessql = "SELECT * FROM mercedesproducts WHERE mercedesid IN (" . implode(',', $_SESSION['mercedescart']) . ")";;
+                $mercedes_products = $con->query($mercedessql);
+
+                if (!isset($_SESSION['qty_array0'])) {
+                    $_SESSION['qty_array0'] = array_fill(0, count($_SESSION['mercedescart']), 1);
+                }
+                while ($mercedesrow = mysqli_fetch_assoc($mercedes_products)) {
+                    $mercedesid = $mercedesrow['mercedesid'];
+                    $Make = $mercedesrow['Make'];
+                    $Model = $mercedesrow['Model'];
+                    $Price = $mercedesrow['price'];
+                    $Quantity =  count(array_keys($_SESSION['mercedescart'], $mercedesid));
+
+                    $orderItems = "INSERT INTO `orderitems`(OrderId,Make,Model,Quantity,Price)
+                VALUES('$OrderId','$Make','$Model','$Quantity','$Price')";
+                    $orderItemsResult = mysqli_query($con, $orderItems);
+                }
             }
-        ?>
-            <?php
-            if (isset($_POST['submitBtn'])) {
-                $id = 2;
-                $name = $_POST['name'];
-                $billingEmail = $_POST['billingEmail'];
-                $address = $_POST['address'];
-                $debitCardNumber = $_POST['cardnum'];
-                $city = $_POST['city'];
-                $cardName = $_POST['cname'];
-                $postcode = $_POST['PostCode'];
-                $expyear = $_POST['expyear'];
-                $expmonth = $_POST['expmonth'];
-                $cvv = $_POST['cvv'];
-                $product = "plswork";
-                
-                // Submit items from basket into an orders database table 
 
-                while ($row = mysqli_fetch_assoc($all_products)) {
-                    $id = $row['id'];
-                    $productName = strval($row['name']);
-                    $price = (int)$row['price'];
-                    $Quantity = count(array_keys($_SESSION['cart'], $id));
-                    // $order = "insert into 'carts' (id,name,Quantity,price)
-                    //                 values ('$id','$productName','$Quantity','$price')";
-                    $order = "INSERT into `carts` (name,Quantity,price)
-                    values ('$productName','$Quantity','$price')";
-                    $orderResult = mysqli_query($con, $order);
+            if (!empty($_SESSION['audicart'])) {
+                $audisql = "SELECT * FROM audiproducts WHERE audiid IN (" . implode(',', $_SESSION['audicart']) . ")";;
+                $audi_products = $con->query($audisql);
+
+                if (!isset($_SESSION['qty_array1'])) {
+                    $_SESSION['qty_array1'] = array_fill(0, count($_SESSION['audicart']), 1);
+                }
+                while ($audirow = mysqli_fetch_assoc($audi_products)) {
+                    $audiid = $audirow['audiid'];
+                    $Make = $audirow['Make'];
+                    $Model = $audirow['Model'];
+                    $Price = $audirow['price'];
+                    $Quantity =  count(array_keys($_SESSION['audicart'], $audiid));
+
+                    $orderItems = "INSERT INTO `orderitems`(OrderId,Make,Model,Quantity,Price)
+                VALUES('$OrderId','$Make','$Model','$Quantity','$Price')";
+                    $orderItemsResult = mysqli_query($con, $orderItems);
+                }
+            }
+
+        ?>
+            </div>
+            <?php
 
             ?>
-                    </div>
-                <?php }
 
-                ?>
-                        <!-- Submit details entered by user into a billings database table. Then clear the session basket -->
- 
-                <?php
-                    $sql = "insert into `billingdetails` (id,name, billingEmail, nameOnCard, address,debitCardNumber, city,  postcode, expyear, expmonth, cvv, product,productPrice,date) 
-                    values('$id','$name','$billingEmail','$cardName','$address','$debitCardNumber','$city','$postcode','$expyear','$expmonth','$cvv','$product','$totalCost',CURRENT_TIME())";
-                    $result = mysqli_query($con, $sql);
-
-                    if ($result) {
-                        echo "<script> alert('Order Has Been Placed');'</script>";
-                    } else {
-                        die(mysqli_errno($con));
-                    }
-                    
-                    unset($_SESSION['basketItem']);
-                    unset($_SESSION['basketPrice']);
-                    unset($_SESSION['cart']);
-                }
-                    ?>
-        <?php } ?>
+        <?php
+            unset($_SESSION['mercedescart']);
+            unset($_SESSION['audicart']);
+        }
+        ?>
 
     </main>
     <?php include("footer.php") ?>

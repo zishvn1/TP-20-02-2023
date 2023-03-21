@@ -52,49 +52,50 @@ include("navbar.php");
         ?><h1 style="padding-left: auto; padding-right:auto; padding-top:8vw; display: flex; justify-content: center; align-items: center; font-size:6vw;"><?php echo 'Your shopping cart is empty'; ?> </h1>
             <i class="fa fa-shopping-bag" style="font-size:20vw; color:rgba(73, 79, 83,0.3);  display: flex; justify-content: center; align-items: center;"></i>
             <br><a style=" display: flex; justify-content: center; align-items: center; font-size:5vw; color:#9c0f0f" href="products.php">Continue shopping</a>
-        <?php }else{
-        $totalCost = 0;
+        <?php } else {
+            $totalCost = 0;
         ?>
-        <div style="position:absolute; margin-left:10%; padding-top:7vw">
-            <table class="table" cellpadding="100" cellspacing="1" style="margin-left:auto; margin-right:auto;">
-                <tbody>
-                    <tr>
-                        <th style="text-align:center;">Make</th>
-                        <th style="text-align: center;">Model</th>
-                        <th style="text-align:center;">Unit Price</th>
-                        <th style="text-align:center;">Quantity</th>
-                        <th style="text-align:center;">Add/Remove</th>
-
-                        <?php
-                        if (!empty($_SESSION['mercedescart'])) {
-                            $mercedessql = "SELECT * FROM mercedesproducts WHERE mercedesid IN (" . implode(',', $_SESSION['mercedescart']) . ")";;
-                            $mercedes_products = $con->query($mercedessql);
-
-                            if (!isset($_SESSION['qty_array0'])) {
-                                $_SESSION['qty_array0'] = array_fill(0, count($_SESSION['mercedescart']), 1);
-                            } ?>
-
-                            <?php // if (!isset($_SESSION['qty_array1'])) {
-                            //$_SESSION['qty_array1'] = array_fill(0, count($_SESSION['audicart']), 1);
-                            //} 
-                            ?>
-
-                    </tr> <?php
-                            while ($mercedesrow = mysqli_fetch_assoc($mercedes_products)) {
-                                $mercedesid = $mercedesrow['mercedesid']; ?>
-
-
+            <div style="position:absolute; margin-left:10%; padding-top:7vw">
+                <table class="table" cellpadding="100" cellspacing="1" style="margin-left:auto; margin-right:auto;">
+                    <tbody>
                         <tr>
-                            <td style="text-align:center;"><?php echo $mercedesrow['Make']; ?></td>
-                            <td style="text-align: center;"><?php echo $mercedesrow['Model'] ?></td>
-                            <td style="text-align:center;">£<?php echo $mercedesrow['price']; ?></td>
-                            <td style="text-align:center;"><?php echo count(array_keys($_SESSION['mercedescart'], $mercedesid)); ?></td>
-                            <td style="text-align:center;"><a href="AddMercedesItemInBasket.php?id=<?php echo $mercedesrow['mercedesid'] ?>"><span class="glyphicon glyphicon-plus" style="color: grey;"></span></a><a href="DeleteMercedesItemFromBasket.php?id=<?php echo $mercedesrow['mercedesid'] ?>"> <span class="glyphicon glyphicon-minus"></span></button></a>
-                            </td>
-                        </tr>
+                            <th style="text-align:center;">Make</th>
+                            <th style="text-align: center;">Model</th>
+                            <th style="text-align:center;">Unit Price</th>
+                            <th style="text-align:center;">Quantity</th>
+                            <th style="text-align:center;">Add/Remove</th>
+
+                            <?php
+                            if (!empty($_SESSION['mercedescart'])) {
+                                $mercedessql = "SELECT * FROM mercedesproducts WHERE mercedesid IN (" . implode(',', $_SESSION['mercedescart']) . ")";;
+                                $mercedes_products = $con->query($mercedessql);
+
+                                if (!isset($_SESSION['qty_array0'])) {
+                                    $_SESSION['qty_array0'] = array_fill(0, count($_SESSION['mercedescart']), 1);
+                                } ?>
+
+                                <?php // if (!isset($_SESSION['qty_array1'])) {
+                                //$_SESSION['qty_array1'] = array_fill(0, count($_SESSION['audicart']), 1);
+                                //} 
+                                ?>
+
+                        </tr> <?php
+                                while ($mercedesrow = mysqli_fetch_assoc($mercedes_products)) {
+                                    $mercedesid = $mercedesrow['mercedesid']; ?>
+
+
+                            <tr>
+                                <td style="text-align:center;"><?php echo $mercedesrow['Make']; ?></td>
+                                <td style="text-align: center;"><?php echo $mercedesrow['Model'] ?></td>
+                                <td style="text-align:center;">£<?php echo $mercedesrow['price']; ?></td>
+                                <td style="text-align:center;"><?php echo count(array_keys($_SESSION['mercedescart'], $mercedesid)); ?></td>
+                                <td style="text-align:center;"><a href="AddMercedesItemInBasket.php?id=<?php echo $mercedesrow['mercedesid'] ?>"><span class="glyphicon glyphicon-plus" style="color: grey;"></span></a><a href="DeleteMercedesItemFromBasket.php?id=<?php echo $mercedesrow['mercedesid'] ?>"> <span class="glyphicon glyphicon-minus"></span></button></a>
+                                </td>
+                            </tr>
                         <?php
-                                $totalCost = $totalCost + $mercedesrow['price'] * count(array_keys($_SESSION['mercedescart'], $mercedesid));
-                             } }
+                                    $totalCost = $totalCost + $mercedesrow['price'] * count(array_keys($_SESSION['mercedescart'], $mercedesid));
+                                }
+                            }
 
                             if (!empty($_SESSION['audicart'])) {
                                 $audisql = "SELECT * FROM audiproducts WHERE audiid IN (" . implode(',', $_SESSION['audicart']) . ")";;
@@ -115,30 +116,32 @@ include("navbar.php");
                                 </td>
                             </tr>
 
-                </tbody>
+                    </tbody>
 
-            <?php
+                <?php
                                     $totalCost = $totalCost + $audirow['price'] * count(array_keys($_SESSION['audicart'], $audiid));
+                                    $_SESSION['totalCost'] = $totalCost;
                                 } ?>
 
 
-            </tbody>
-            <!-- Total cost is calculated and displayed -->
-        <?php } ?>
-        <tr>
-            <td colspan="2" align="right">Total:</td>
-            <td style="align:right"><?php echo '£' . $totalCost; ?></td>
-            <td><a href="Checkout.php"><button>Checkout securely</button></a></td>
+                </tbody>
+                <!-- Total cost is calculated and displayed -->
+            <?php } ?>
+            <tr>
+                <td colspan="2" align="right">Total:</td>
+                <td style="align:right"><?php echo '£' . $totalCost; ?></td>
+                <td><a href="CheckoutFlow.php"><button>Checkout securely</button></a></td>
 
-        </tr>
-        <tr><a style="font-size: 3vw;" href="DeleteWholeCart.php">Clear Cart</a></tr>
-            </table>
-        <?php         }
-        
-        ?>
+            </tr>
+            <tr><a style="font-size: 3vw;" href="DeleteWholeCart.php">Clear Cart</a></tr>
+                </table>
+            <?php
+        }
+
+            ?>
 
 
-        <div style="float: right;">
+            <div style="float: right;">
     </main>
     <?php include 'footer.php' ?>
 
