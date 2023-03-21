@@ -90,8 +90,9 @@ price, year mileage, fueltype, drivetype(gearbox), color and condition -->
     <option value="2">£10,000 to £15,000</option>
     <option value="3">£15,000 to £20,000</option>
     <option value="4">£20,000 to £30,000</option>
-    <option value="5">£30,000 to £50,000</option>
-    <option value="6">£50,000 to £100,000</option>
+    <option value="5">£30,000 to £40,000</option>
+    <option value="6">£40,000 to £50,000</option>
+    <option value="7">£50,000 to £100,000</option>
   </select>
 
   <label for="year">Year:</label>
