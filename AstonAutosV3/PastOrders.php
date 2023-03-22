@@ -3,6 +3,7 @@ session_start();
 //disallows any and all access to this page UNLESS you sign in
 include("connect.php");
 include("navbar.php");
+include("footer.php");
 $customerId = $_SESSION['id'];
 ?>
 
@@ -16,6 +17,10 @@ $customerId = $_SESSION['id'];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Design for the table that displays the current basket of the user -->
     <style>
@@ -23,6 +28,15 @@ $customerId = $_SESSION['id'];
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  display: block;
+  justify-content: center;
+}
+.card-body{
+    font-size: 1.5vw;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -38,40 +52,38 @@ $customerId = $_SESSION['id'];
 </head>
 
 
-<body>
-    <br><br><br> <br>
-    <h1>Past Orders</h1> <br><br>
+<body style="padding-bottom: 20%;">
+    <h1 style="padding-top: 100px;">Past Orders</h1> <br><br>
     <?php
-    $PastOrderssql = "SELECT * FROM orderitems JOIN orders ON orderitems.OrderId = orders.OrderId   WHERE CustomerId = $customerId";
+    $PastOrderssql = "SELECT *,orders.TotalCost FROM orderitems JOIN orders ON orderitems.OrderId = orders.OrderId   WHERE CustomerId = $customerId";
     $PastOrder_products = $con->query($PastOrderssql);
 
     $CurrentId =null;
     while ($PastOrderrow = mysqli_fetch_assoc($PastOrder_products)) {
         if($CurrentId != $PastOrderrow['OrderId']){
             if($CurrentId !=null){
-                echo "</div>";
+                   echo "</div></div>";
             }
             echo "<div class='card'>";
-            echo " <div class='card-header'>"."<b>Order #".$PastOrderrow['OrderId']; "</b> </div>";
+            ?>  
+            <?php
+              $date = $PastOrderrow['OrderTime'];
+              $timestamp = date('d-m-Y H:i:s',strtotime($date));
+            ?>
+            <div class="card-header" style="text-align: left; font-size:2vw;"><?php echo 'Order #'.$PastOrderrow['OrderId'].' &nbsp;Order placed '.$timestamp.'&nbsp'.'&nbsp; Total cost: £'.$PastOrderrow['TotalCost']?></div>
+             <a href="PastOrderView.php?id=<?php echo $PastOrderrow['OrderId']?>" style="font-size: 1.5vw;">View details</a>
 
-            echo "<h2>".$PastOrderrow['OrderId']."</h2>";
-            $CurrentId = $PastOrderrow['OrderId'];
+            <?php
+            $CurrentId = $PastOrderrow['OrderId']; 
         }
-        echo"<p>".$PastOrderrow['Quantity']."x ".$PastOrderrow['Make']." ".$PastOrderrow['Model']." £".$PastOrderrow['Price']."</p>";
-        echo"<p> Total cost: £";
+        // echo"<div class='card-body'>"."<p>".$PastOrderrow['Quantity']."x ".$PastOrderrow['Make']." ".$PastOrderrow['Model']." £".$PastOrderrow['Price']."</p></div>";
+      
 ?>
-
-        <!-- <div class="card">
-            <div class="card-header"> <b><?php echo 'Order #'.$PastOrderrow['OrderId']; ?></b> </div>
-            <div class="container">
-                <h4><b><?php echo $PastOrderrow['Quantity'].'x '. $PastOrderrow['Make'].' '. $PastOrderrow['Model'];?></b></h4>
-                <p><?php echo '£'.$PastOrderrow['Price']; ?></p>
-            </div>
-        </div> -->
+        <div class="card-body"><?php echo $PastOrderrow['Quantity']."x ".$PastOrderrow['Make']."".$PastOrderrow['Model']."£".$PastOrderrow['Price']?></div>
+        
     <?php 
        
     } ?>
-
 </body>
 
 
