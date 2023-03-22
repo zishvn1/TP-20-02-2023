@@ -46,7 +46,8 @@ include("navbar.php");
 
         <!-- Sets the basket total to 0 initially and checks if the cart/basket has any items in it.
         If it is empty then a message specifying the cart is empty is displayed -->
-        <?php
+       <a href="PastOrders.php">HERE</a>
+       <?php    
 
         if (empty($_SESSION['mercedescart']) && empty($_SESSION['audicart'])) {
         ?><h1 style="padding-left: auto; padding-right:auto; padding-top:8vw; display: flex; justify-content: center; align-items: center; font-size:6vw;"><?php echo 'Your shopping cart is empty'; ?> </h1>
@@ -130,7 +131,7 @@ include("navbar.php");
             <tr>
                 <td colspan="2" align="right">Total:</td>
                 <td style="align:right"><?php echo '£' . $totalCost; ?></td>
-                <td><a href="CheckoutFlow.php"><button>Checkout securely</button></a></td>
+                <td><a href="Checkout.php"><button>Checkout securely</button></a></td>
 
             </tr>
             <tr><a style="font-size: 3vw;" href="DeleteWholeCart.php">Clear Cart</a></tr>
