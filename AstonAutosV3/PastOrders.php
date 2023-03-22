@@ -69,9 +69,12 @@ $customerId = $_SESSION['id'];
             <?php
               $date = $PastOrderrow['OrderTime'];
               $timestamp = date('d-m-Y H:i:s',strtotime($date));
+
+              $cost = $PastOrderrow['TotalCost'];
+              $CostFormat = number_format($cost);
             ?>
-            <div class="card-header" style="text-align: left; font-size:2vw;"><?php echo 'Order #'.$PastOrderrow['OrderId'].' &nbsp;Order placed '.$timestamp.'&nbsp'.'&nbsp; Total cost: £'.$PastOrderrow['TotalCost']?></div>
-             <a href="PastOrderView.php?id=<?php echo $PastOrderrow['OrderId']?>" style="font-size: 1.5vw;">View details</a>
+            <div class="card-header" style="text-align: left; font-size:2vw;"><?php echo 'Order #'.$PastOrderrow['OrderId'].' &nbsp;Order placed '.$timestamp.'&nbsp'.'&nbsp; Total cost: £'.$CostFormat?></div>
+             <a href="PastOrderView.php?id=<?php echo $PastOrderrow['OrderId']?>" style="font-size: 2vw;">View details</a>
 
             <?php
             $CurrentId = $PastOrderrow['OrderId']; 
@@ -79,7 +82,7 @@ $customerId = $_SESSION['id'];
         // echo"<div class='card-body'>"."<p>".$PastOrderrow['Quantity']."x ".$PastOrderrow['Make']." ".$PastOrderrow['Model']." £".$PastOrderrow['Price']."</p></div>";
       
 ?>
-        <div class="card-body"><?php echo $PastOrderrow['Quantity']."x ".$PastOrderrow['Make']."".$PastOrderrow['Model']."£".$PastOrderrow['Price']?></div>
+        <div class="card-body" style="font-size: 1.5vw;"><?php echo $PastOrderrow['Quantity']."x ".$PastOrderrow['Make']."".$PastOrderrow['Model']." £".$CostFormat?></div>
         
     <?php 
        

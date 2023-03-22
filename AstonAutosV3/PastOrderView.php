@@ -28,6 +28,14 @@ $id = $_GET['id'];
 
         $PastOrderrow = mysqli_fetch_assoc($PastOrder_products);
         ?>
+
+<?php
+              $date = $PastOrderrow['OrderTime'];
+              $timestamp = date('d-m-Y H:i:s',strtotime($date));
+
+              $cost = $PastOrderrow['TotalCost'];
+              $CostFormat = number_format($cost);
+            ?>
 <div style="display:flex;justify-content:center;align-items:center;padding-bottom:3.5vw;">
     <div class="card">
         <div style="display:flex;justify-content:center;align-items:center;">
@@ -36,7 +44,7 @@ $id = $_GET['id'];
         </div>
         <table style="text-align:left; font-size:2vw;">
             <tr>
-                <td><?php echo $PastOrderrow['OrderTime'] ?></td>
+                <td><?php echo $timestamp ?></td>
             </tr>
             <tr>
                 <td><?php echo $PastOrderrow['Name'] ?></td>
@@ -54,7 +62,7 @@ $id = $_GET['id'];
                 <td><?php echo $PastOrderrow['PaymentMethod'] ?></td>
             </tr>
             <tr>
-                <td><?php echo "£" . $PastOrderrow['TotalCost'] ?></td>
+                <td><?php echo "£" . $CostFormat ?></td>
             </tr>
 
         </table>
@@ -63,7 +71,8 @@ $id = $_GET['id'];
 <?php
 while ($PastOrderrow = mysqli_fetch_assoc($PastOrder_products)) {
 
-
+              $cost = $PastOrderrow['Price'];
+              $CostFormat = number_format($cost);
 ?>
     <div style="display:flex;justify-content:center;align-items:center;flex-direction:column;">
 
@@ -80,7 +89,7 @@ while ($PastOrderrow = mysqli_fetch_assoc($PastOrder_products)) {
                     <td></td>
                     <td style="text-align: left;"><?php echo $PastOrderrow['Make'] . " " . $PastOrderrow['Model']; ?></td>
                     <td><?php echo $PastOrderrow['Quantity'] ?></td>
-                    <td><?php echo "£" . $PastOrderrow['Price'] ?></td>
+                    <td><?php echo "£" . $CostFormat ?></td>
                 </tr>
             </table>
         </div>
