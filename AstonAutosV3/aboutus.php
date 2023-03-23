@@ -18,10 +18,119 @@ if (!isset($_SESSION['id'])) {
 </head>
 
 <style>
+    .maintitle {
+        font-size: 70px;
+        text-align: center;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: #bf1e2e;
+    }
 
+    .main {
+        font-size: 25px;
+        text-align: center;
+        width: 100%;
+        display: center;
+    }
 
+    .main2 {
+        font-size: 25px;
+        text-align: center;
+        width: 100%;
+        display: center;
+        position: absolute;
+        margin-top: 70%;
+    }
 
+    .cover {
+        text-align: center;
+        width: 100%;
+        display: flex;
+    }
 
+    .box1 h2 {
+        color: #bf1e2e;
+    }
+
+    .box2 h2 {
+        color: #bf1e2e;
+    }
+
+    .box3 h2 {
+        color: #bf1e2e;
+    }
+
+    .box1,
+    .box2,
+    .box3 p {
+        color: rgb(0, 0, 0);
+    }
+
+    .box1 {
+        margin-top: 30px;
+        font-size: 25px;
+    }
+
+    .box2 {
+        margin-top: 30px;
+        font-size: 25px;
+    }
+
+    .box3 {
+        margin-top: 30px;
+        font-size: 25px;
+    }
+
+    .teamtitle {
+        font-size: 50px;
+        text-align: center;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: #bf1e2e;
+        margin-top: -40%;
+    }
+
+    .team-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .team-member {
+        width: 150px;
+        margin: 30px;
+    }
+
+    .team-member img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-member h3 {
+        font-size: 24px;
+        margin: 5px 0;
+    }
+
+    .team-member p {
+        font-size: 18px;
+        margin: 2px 0;
+    }
+
+    .containerAboutUs {
+        width: 100%;
+        padding: -140px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        display: flex;
+    }
+
+    .containerAboutUsTeamMember {
+        width: 100%;
+        padding: 25px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        margin-top: 50%;
+        float: right;
+    }
 </style>
 
 <body>
