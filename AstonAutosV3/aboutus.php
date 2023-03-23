@@ -18,6 +18,10 @@ if (!isset($_SESSION['id'])) {
 </head>
 
 <style>
+    body {
+        background-image: url("images/backgroundAboutUs.jpg");
+        background-size: 140% 200%;
+    }
     .maintitle {
         font-size: 70px;
         text-align: center;
@@ -57,12 +61,6 @@ if (!isset($_SESSION['id'])) {
 
     .box3 h2 {
         color: #bf1e2e;
-    }
-
-    .box1,
-    .box2,
-    .box3 p {
-        color: rgb(0, 0, 0);
     }
 
     .box1 {
