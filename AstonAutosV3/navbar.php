@@ -15,9 +15,9 @@
         </ul>
         <ul>
             <li><a href="index.php">HOME</a></li>
-            <li><a href="products.php">CARS FOR SALE</a></li>
+            <li><a href="filterNew.php">CARS FOR SALE</a></li>
             <li><a href="aboutus.php">ABOUT US</a></li>
-            <li><a href="contactus.php">CONTACT US</a></li>
+            <li><a href="contactUsNew.php">CONTACT US</a></li>
             <li><a href="Currentbasket.php">BASKET</a></li>
             <?php
 
