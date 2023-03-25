@@ -41,14 +41,10 @@
 
 <body>
 
-    <div class="footer">
-        <a href="https://www.facebook.com">
-            <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com/astonautos/">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-    </div>
+<div class="footer">
+    <a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com/astonautos/"><i class="fa-brands fa-instagram"></i></a>
+</div>
 
 </body>
 
