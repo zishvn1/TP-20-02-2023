@@ -20,8 +20,9 @@ if (!isset($_SESSION['id'])) {
 <style>
     body {
         background-image: url("images/backgroundAboutUs.jpg");
-        background-size: 140% 200%;
+        background-size: 130% 220%;
     }
+
     .maintitle {
         font-size: 70px;
         text-align: center;
