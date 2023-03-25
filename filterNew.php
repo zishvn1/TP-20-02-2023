@@ -1,4 +1,22 @@
 <html>
+  <head>
+  <style>
+    .form-container {
+        float: left;
+        width: 20%;
+        display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+ 
+    }
+    
+    .car-container {
+        margin-left: 22%;
+    }
+</style>
+
+  </style>
+</head>
 <!-- when reading this code, it is strongly advised you do not change ANY of the variable names at all, any 
 changes inflicted on the variable names could lead to catastrophic outcomes to the functionality of this code.-->
 
@@ -6,7 +24,8 @@ changes inflicted on the variable names could lead to catastrophic outcomes to t
 
 <!-- one possible change that could be inflicted is getting the filter button to not reset the form each time it is clicked-->
   <body>
-<form id = "filter-form" method="post" action="filterNew.php">
+    <div class ="form-container">
+<form id = "filter-form" method="post" action="filterNewV3.php">
   <label for="make">Make:</label>
   <select name="make" id="make">
     <option value="">Any</option>
@@ -48,7 +67,6 @@ changes inflicted on the variable names could lead to catastrophic outcomes to t
   </select> <!-- this code takes the models for each car. they yet have not been assigned to their respective make-->
 
 
-
   <script>/*this below code assigns each model to their respective make. in order to keep it logically correct.
   and to make sure that each model reflects their respective make when being filtered.*/
     const models = {//this tells the code what make each model should be assigned to
@@ -83,7 +101,8 @@ changes inflicted on the variable names could lead to catastrophic outcomes to t
   </script>
   <!-- this form below continues to take inputs from the user to filter the 
 price, year mileage, fueltype, drivetype(gearbox), color and condition -->
-  <label for="price">Price:</label>
+
+<label for="price">Price:</label>
   <select name="price" id="price">
     <option value="">Any</option>
     <option value="1">Less than £10,000</option>
@@ -103,6 +122,7 @@ price, year mileage, fueltype, drivetype(gearbox), color and condition -->
   <option value="2015-2020">2015 - 2020</option>
   <option value="2020-newer">2020 or Newer</option>
 </select>
+
 <label for="mileage">Mileage:</label>
 <select name="mileage" id="mileage">
   <option value="">Any</option>
@@ -141,6 +161,7 @@ price, year mileage, fueltype, drivetype(gearbox), color and condition -->
   <option value="manual">Manual</option>
   <option value="automatic">Automatic</option>
 </select>
+
 <label for="color">Color:</label>
 <select name="color" id="color">
   <option value="">Any</option>
@@ -151,17 +172,16 @@ price, year mileage, fueltype, drivetype(gearbox), color and condition -->
   <option value="white">White</option>
   <option value="grey">Grey</option>
 </select>
+
 <label for="conditionofcar">Condition:</label>
 <select name="conditionofcar" id="conditionofcar">
   <option value="">Any</option>
   <option value="new">New</option>
   <option value="used">Used</option>
 </select>
-
 <button type="submit" name="action" value="Filter">Filter</button>
-
-  
 </form>
+  </div>
   </body>
 </html>
 
@@ -333,22 +353,48 @@ if (!empty($_POST['conditionofcar'])) {
 $result = $con->query($sql);
 
 // display the car data in html format
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo '<div Class="car">';
-        echo '<h2>' . $row['make'] . ' ' . $row['model'] . '</h2>';
-        echo '<p>Year: ' . $row['year'] . '</p>';
-        echo '<p>Fuel Type: ' . $row['fueltype'] . '</p>';
-        echo '<p>Mileage: ' . $row['mileage'] . '</p>';
-        echo '<p>Gearbox: ' . $row['drivetype'] . '</p>';
-        echo '<p>Color: ' . $row['color'] . '</p>';
-        echo '<p>Condition: ' . $row['conditionofcar'] . '</p>';
-        echo '<p>Price: £' . $row['price'] . '</p>';
-        echo '</div>';
-    }
-} else {
-    echo '<p>No cars found</p>';
+?>
+<style>
+.car-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px;
+  margin-left: 20%;
 }
+
+.car-box {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 5px #ddd;
+  margin-top: 10%;
+  margin-right: 3%;
+}
+</style>
+
+<div class="car-container">
+  <?php
+  if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+      echo '<div class="car-box">';
+      echo '<h2>' . $row['make'] . ' ' . $row['model'] . '</h2>';
+      echo '<p>Year: ' . $row['year'] . '</p>';
+      echo '<p>Fuel Type: ' . $row['fueltype'] . '</p>';
+      echo '<p>Mileage: ' . $row['mileage'] . '</p>';
+      echo '<p>Gearbox: ' . $row['drivetype'] . '</p>';
+      echo '<p>Color: ' . $row['color'] . '</p>';
+      echo '<p>Condition: ' . $row['conditionofcar'] . '</p>';
+      echo '<p>Price: £' . $row['price'] . '</p>';
+      echo '</div>';
+    }
+  } else {
+    echo '<p>No cars found</p>';
+  }
+  
+
+
+
 
 // close the database connection
 $con->close();
@@ -356,3 +402,4 @@ $con->close();
 
 //NOTE THIS IS STILL A WORK IN PROGRESS AND CHANGES MAY BE INFLICTED IF NECESSARY
 ?>
+</div>
