@@ -32,27 +32,27 @@ if (!isset($_SESSION['id'])) {
         </div>
         <div class="brands-container">
             <button class="brands">
-                <a href="products.php">
+                <a href="filterNew.php">
                     <img src="images/bmwlogo.png">
                 </a>
             </button>
             <button class="brands">
-                <a href="products.php">
+                <a href="filterNew.php">
                     <img src="images/mblogo.png">
                 </a>
             </button>
             <button class="brands">
-                <a href="products.php">
+                <a href="filterNew.php">
                     <img src="images/toyotalogo.png">
                 </a>
             </button>
             <button class="brands">
-                <a href="products.php">
+                <a href="filterNew.php">
                     <img src="images/vwlogo.png">
                 </a>
             </button>
             <button class="brands">
-                <a href="products.php">
+                <a href="filterNew.php">
                     <img src="images/audilogo.png">
                 </a>
             </button>
