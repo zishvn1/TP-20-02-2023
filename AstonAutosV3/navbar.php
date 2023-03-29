@@ -14,7 +14,7 @@
             <img src="images/logo-removebg.png" class="logo" />
         </ul>
         <ul>
-            <li><a href="index.php">HOME</a></li>
+            <li><a href="indexnew.php">HOME</a></li>
             <li><a href="filterNew.php">CARS FOR SALE</a></li>
             <li><a href="aboutus.php">ABOUT US</a></li>
             <li><a href="contactUsNew.php">CONTACT US</a></li>
