@@ -11,15 +11,35 @@
 
 <style>
     .footer {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
         background-color: white;
         text-align: center;
-        font-size: 2em;
         border-top: 1px solid black;
         z-index: 200;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer i {
+        font-size: 2em;
+    }
+
+    .footer span {
+        font-size: 1.7em;
+    }
+
+
+
+    .footer-icons {
+        width: 150px;
+        margin: 0 auto;
+        margin-left: 45%;
+        text-align: center;
     }
 
     .fa-facebook {
@@ -42,14 +62,14 @@
 <body>
 
     <div class="footer">
-        <a href="https://www.facebook.com">
-            <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/profile.php?id=100091337827218"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/astonautos/"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div>
+            <span>Established in 2023.</span>
+        </div>
     </div>
-
 </body>
 
 </html>
