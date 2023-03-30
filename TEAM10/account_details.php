@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-
+//HTML Form to display details
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
