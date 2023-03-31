@@ -128,7 +128,8 @@ ALTER TABLE `reviews`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Admin Id`) REFERENCES `admin` (`Id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Admin Id`) REFERENCES `admin` (`id`),
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`Order Id`) REFERENCES `orders` (`orderid`);
 
 --
 -- Constraints for table `employee`
