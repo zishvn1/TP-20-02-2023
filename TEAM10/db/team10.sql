@@ -125,13 +125,13 @@ ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`Product Id`) REFERENCES `products` (`Id`);
 
 --
--- Constraints for table `reviews`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Admin Id`) REFERENCES `admin` (`Id`);
 
 --
--- Constraints for table `reviews`
+-- Constraints for table `employee`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`customerid`) REFERENCES `customers` (`id`);
