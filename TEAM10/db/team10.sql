@@ -8,6 +8,7 @@ CREATE TABLE `admin` (
 CREATE TABLE `employee` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `customerid` int(11) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
@@ -101,27 +102,39 @@ CREATE TABLE `products` (
 -- Constraints for table `basket`
 --
 ALTER TABLE `basket`
-  ADD CONSTRAINT `basket_ibfk_1` FOREIGN KEY (`Customer Id`) REFERENCES `customers` (`Id`),
-  ADD CONSTRAINT `basket_ibfk_2` FOREIGN KEY (`Product Id`) REFERENCES `products` (`Id`);
+  ADD CONSTRAINT `basket_ibfk_1` FOREIGN KEY (`customerid`) REFERENCES `customers` (`id`),
+  ADD CONSTRAINT `basket_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `products` (`Id`);
 
 --
 -- Constraints for table `enquiries`
 --
 ALTER TABLE `enquiries`
-  ADD CONSTRAINT `enquiries_ibfk_1` FOREIGN KEY (`Customer Id`) REFERENCES `customers` (`Id`);
+  ADD CONSTRAINT `enquiries_ibfk_1` FOREIGN KEY (`customerid`) REFERENCES `customers` (`id`);
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`Customer Id`) REFERENCES `customers` (`Id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerid`) REFERENCES `customers` (`id`);
 
 --
 -- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`Customer Id`) REFERENCES `customers` (`Id`),
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`Customer Id`) REFERENCES `customers` (`id`),
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`Product Id`) REFERENCES `products` (`Id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Admin Id`) REFERENCES `admin` (`Id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `employee`
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`customerid`) REFERENCES `customers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
