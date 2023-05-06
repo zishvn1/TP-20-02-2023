@@ -1,4 +1,4 @@
-# This repository is for TEAM 10 fro Group 2, TP2 
+# This was a project I took alongside 8 other team members. We collaborated to create a functioning e-commerce website.
 # Business name : Aston Autos
 Project Brief:
 We have built the application to meet the needs of the business owner: an e-commerce platform with a java backend.
