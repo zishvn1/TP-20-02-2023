@@ -22,4 +22,4 @@ appointments.sql,
 filterNewV3.php, and
 cars1.sql
 
-I also aided in the documentation writing of this project. 
+I also aided in the document writing of this project. 
