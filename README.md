@@ -14,12 +14,12 @@ THE phpmailer CODE WAS TAKEN FROM A PUBLIC GITHUB REPO
 
 I, Zishan Ashfaq declare the work I have created/ contributed towards below:
 
-contactUs.php
-contacts.sql
-Loginform.java
-bookApp.php
-appointments.sql
-filterNewV3.php
+contactUs.php,
+contacts.sql,
+Loginform.java,
+bookApp.php,
+appointments.sql,
+filterNewV3.php, and
 cars1.sql
 
 I also aided in the documentation writing of this project. 
