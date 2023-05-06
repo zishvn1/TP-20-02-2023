@@ -47,11 +47,35 @@ if (isset($_POST['submit'])) {
         background-image: url("images/backgroundAboutUs.jpg");
         background-size: 100% 100%;
     }
+
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+    .active,
+    .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+    }
 </style>
 
 
 <body>
-
 
     <?php
     include('navbar.php')
@@ -99,65 +123,69 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
+    <!-- Contact Form End -->
 
-  
-        <div class ="fqas">
-            <h1>Frequently Asked Questions</h1>
 
-            <button class="accordion">Question 1</button>
-            <div class="panel">
-                <p>
-                Lorem ipsum dolor sit amet, 
-                consectetur adipisicing elit, 
-                sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua.
-                </p>
-            </div>
-            
 
-            <button class="accordion">Question 2</button>
-            <div class="panel">
-                <p>
-                Lorem ipsum dolor sit amet, 
-                consectetur adipisicing elit, 
-                sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua.
-                </p>
-            </div>
 
-            <button class="accordion">Question 3</button>
-            <div class="panel">
-                <p>
-                Lorem ipsum dolor sit amet, 
-                consectetur adipisicing elit, 
-                sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua.
-                </p>
-            </div>
 
-            <button class="accordion">Question 4</button>
-            <div class="panel">
-                <p>
-                Lorem ipsum dolor sit amet, 
-                consectetur adipisicing elit, 
-                sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua.
-                </p>
-            </div>
+    <div class="containerContactUs">
+        <h2>FAQ!
+        </h2>
 
-            <button class="accordion">Question 5</button>
-            <div class="panel">
-                <p>
-                Lorem ipsum dolor sit amet, 
-                consectetur adipisicing elit, 
-                sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua.
-                </p>
-            </div>
-        
+        <button class="accordion">1. Can the car be financed ?</button>
+        <div class="panel">
+            <p>This all depends on the type of car you are considering leasing. Because it will need to be eligible for it but if it
+                is not when you book a viewing the dealer maybe able to recommend you pay in instalments.
         </div>
-    
-    <!-- end of contact us -->
+
+        <button class="accordion">2. Is there a maximum amount of cars that can be purchased? </button>
+        <div class="panel">
+            <p>Yes, there is. You can buy up to a max of 3 cars at once.</p>
+        </div>
+
+        <button class="accordion">3. Are there any incentives that come when purchasing the car? </button>
+        <div class="panel">
+            <p>They are not any incentives as of yet. But if you get in touch with a salesperson via the “How can I help you form” on the Contact Us page.
+                They should be in touch with you within 2-3 working days and should be able to provide you with more information about what the car comes with.</p>
+        </div>
+        <button class="accordion">4. Can the balance of a financed car be paid outright? </button>
+        <div class="panel">
+            <p>Yes, the balance of the car can be paid outright but it also depends on the terms and conditions of your contract.</p>
+        </div>
+        <button class="accordion">5. Do the cars have a warranty and for how long?</button>
+        <div class="panel">
+            <p>Yes, the warranty lasts three years.</p>
+        </div>
+        <button class="accordion">6. Can a financed car be sold? </button>
+        <div class="panel">
+            <p>No, you are not able to sell a financed car.</p>
+        </div>
+        <button class="accordion">7. How long is the pickup after purchase? </button>
+        <div class="panel">
+            <p>It depends on the car and if it’s in stock but it should usually take about 1-2 weeks.
+                Hey you can edit these answers but his is what I have come up with</p>
+        </div>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        </script>
+    </div>
+
+
+
     <?php
     include('footer.php')
     ?>
